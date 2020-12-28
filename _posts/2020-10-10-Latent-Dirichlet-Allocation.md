@@ -3,8 +3,8 @@
 layout: post
 title: Latent Dirichlet Allocation with Python Code Implementation
 tags: paper_review
-mathjax: true
-
+mathjax: 
+	enable: true
 ---
 # Latent Dirichlet Allocation
 
