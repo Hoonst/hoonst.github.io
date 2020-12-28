@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: post
 title: "Graph Convolutional Network (GCN)"
 tags: paper_review
 mathjax: true
