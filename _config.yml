@@ -43,12 +43,13 @@ liquid:
 
 # Build settings
 permalink: /:categories/:title/
-markdown: kramdown
-
 mathjax:
   enable: true
   per_page: true
   cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown: kramdown
+
 
 feed:
   path: atom.xml
