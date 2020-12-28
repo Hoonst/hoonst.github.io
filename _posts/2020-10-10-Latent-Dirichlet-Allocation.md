@@ -3,6 +3,7 @@
 layout: post
 title: Latent Dirichlet Allocation with Python Code Implementation
 tags: paper_review
+use_math: true
 ---
 # Latent Dirichlet Allocation
 
