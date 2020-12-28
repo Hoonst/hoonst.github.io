@@ -1,11 +1,10 @@
 ---
-layout: article
+layout: post
 title: "Graph Convolutional Network (GCN)"
-tags: paper_review
-mathjax: true
-comments: true
----
+description: "Thomas N.Kipf, Max Welling / ICLR 2017"
+tags: [paper_review]
 
+---
 
 **Semi-Supervised Classification with Graph Convolutional Networks - Thomas N.Kipf, Max Welling / ICLR 2017**
 
