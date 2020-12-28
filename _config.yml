@@ -18,6 +18,10 @@ url: 'https://hoonst.github.io'
 baseurl: '/'
 permalink: pretty
 
+mathjax:
+  enable: true
+  per_page: true
+  cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
 # Pagination
 paginate: 10
 #paginate_path: "/page:num/"
