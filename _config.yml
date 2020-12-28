@@ -46,7 +46,7 @@ permalink: /:categories/:title/
 markdown: kramdown
 mathjax:
   enable: true
-  combo: "latex"
+  combo: "tex-mml-chtml"
 feed:
   path: atom.xml
 
