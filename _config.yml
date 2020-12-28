@@ -4,10 +4,10 @@
 # ---------------------------------------------------------------
 
 # Site
-title: youngerous research
+title: LOVIT x DATA SCIENCE
 subtitle:
 description:
-author: Takyoung Kim
+author: Hyunjoong Kim (lovit)
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: en
 date_format: '%Y-%m-%d'
@@ -32,7 +32,7 @@ paginate: 10
   #paginate_path: "/page:num/"
 
 # Handling Reading
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "Gemfile", "Gemfile.lock", "README_en.md", "vendor"]
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "Gemfile", "Gemfile.lock", "README_en.md"]
 
 # Separator
 #excerpt_separator: <!-- more -->
@@ -40,8 +40,6 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "
 # Code Highlighter
 ## 'pygments' is unsupported on GitHub Pages now.
 highlighter: rouge
-highlight:
-  line_number: true
 
 #### Markdown Processors
 ## 'redcarpet' is unsupported on GitHub Pages now.
@@ -67,7 +65,8 @@ feed:
 # Plugins
 ## Docs: https://help.github.com/articles/configuring-jekyll-plugins/
 plugins:
- - jemoji
+# jemoji conficts with toc in some no-ascii post
+# - jemoji
  - jekyll-sitemap
  - jekyll-feed
 
@@ -76,10 +75,10 @@ plugins:
 # ---------------------------------------------------------------
 
 # Put your favicon.ico into `assets/` directory.
-favicon: assets/favicon.ico
+favicon: /assets/favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Jekyll, NexT"
+keywords: "lovit, hyunjoong kim, machine learning, 한국어 자연어처리"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -93,7 +92,7 @@ rss:
 authoricon: heart
 
 # Footer `powered-by` and `theme-info` copyright
-copyright: false
+copyright: true
 
 # ---------------------------------------------------------------
 # SEO Settings
@@ -118,11 +117,11 @@ index_with_subtitle: false
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 menu:
   home: /
-  # categories: /categories/
+  #categories: /categories/
   about: /about/
   archives: /archives/
   tags: /tags/
-  sitemap: https://youngerous.github.io/note/
+  sitemap: /navigator/
   #commonweal: /404.html
 
 
@@ -139,8 +138,8 @@ menu_icons:
   categories: th
   schedule: calendar
   tags: tags
-  archives: archive
-  sitemap: sticky-note
+  navigator: archive
+  sitemap: sitemap
   commonweal: heartbeat
 
 
@@ -227,13 +226,13 @@ social_icons:
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
-  Twitter: twitter
-  Weibo: weibo
+  # Twitter: twitter
+  # Weibo: weibo
 
 
 # Sidebar Avatar
 # in directory: /assets/images/avatar.gif
-avatar: /assets/figures/moja.jpeg
+#avatar:
 
 
 # Table Of Contents in the Sidebar
@@ -241,7 +240,7 @@ toc:
   enable: true
 
   # Automatically add list number to toc.
-  number: false
+  number: true
 
   # If true, all words will placed on next lines if header width longer then sidebar width.
   wrap: false
@@ -257,7 +256,7 @@ toc:
 sidebar:
   # Sidebar Position, available value: left | right
   position: left
-  # position: right
+  #position: right
 
   # Sidebar Display, available value:
   #  - post    expand on posts automatically. Default.
@@ -380,38 +379,12 @@ han: false
 
 # Disqus
 disqus:
-  enable: true
-  shortname: youngerous
+  enable: false
+  shortname: lovit-x-datascience
   count: true
   # hide comments (visitors need to click to load the comments)
   # count need to be false when hide is true
   hide: false
-
-# <wildfire>
-wildfire:
-  enable: false
-  # version - It's recommended to use the following versions.
-  loaderVersion: 1.2.5 # https://www.npmjs.com/package/wildfire-comment
-  useDev: true
-  version: 0.5.6
-  # database config
-  databaseProvider: firebase # or wilddog
-  firebase: # your firebase config goes here ↓
-    apiKey:
-    authDomain:
-    databaseURL:
-    projectId:
-    storageBucket:
-    messagingSenderId:
-  wilddog: # your wilddog config goes here ↓
-    siteId:
-  # other configs
-  theme: light # or dark
-  locale: en # or other locales, e.g. zh-CN
-  defaultAvatarURL:
-# Any question?
-# Raise an issue here: https://github.com/cheng-kang/wildfire/issues
-# </wildfire>
 
 # Hypercomments
 #hypercomments_id:
@@ -433,15 +406,6 @@ changyan:
 # You can get your uid from https://livere.com/insight/myCode (General web site)
 #livere_uid: your uid
 
-# Support for gitalk comments system.
-gitalk:
-  enable: false
-  clientID: # 54730ddf7b9420460c03
-  clientSecret: # c05684701b25ff1c19ea0c01ce4d80c125e0707d
-  repo: # colingpt.github.io
-  owner: # colingpt
-  admin: # colingpt
-
 # Baidu Share
 # Available value:
 #    button | slide
@@ -462,7 +426,7 @@ gitalk:
 #google_site_verification:
 
 # Google Analytics
-google_analytics: G-7XK68RN493
+google_analytics: UA-129549627-1
 
 # Yandex Webmaster tools verification setting
 # See: https://webmaster.yandex.ru/
