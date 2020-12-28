@@ -3,6 +3,7 @@ layout: post
 title: "Graph Convolutional Network (GCN)"
 tags: paper_review
 comments: true
+use_math: true
 ---
 
 **Semi-Supervised Classification with Graph Convolutional Networks - Thomas N.Kipf, Max Welling / ICLR 2017**
