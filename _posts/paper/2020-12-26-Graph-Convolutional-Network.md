@@ -3,6 +3,7 @@ layout: post
 title: "Graph Convolutional Network (GCN)"
 description: "Thomas N.Kipf, Max Welling / ICLR 2017"
 tags: [paper_review]
+date: 2020-12-26
 
 ---
 
@@ -21,9 +22,7 @@ $L = L_0 + \lambda L_{reg}, with \ L_{reg} = \sum_{i,j} A_{ij} \|f(X_i ) - f(x_j
 Notation:
 
 * $L_0$: Graph의 Label이 존재하는 데이터의 supervised loss
-
 * $f(\cdot)$: 미분 함수가 포함된 Neural Network
-
 * $\lambda$: weighting factor
 * $X$: 노드들의 feature vector를 담는 $X_i$들의 행렬
 * $\Delta$: $D-A$ 로 나타내며 Graph의 Unnormalized graph Laplacian
@@ -485,51 +484,34 @@ GCN을 이해하기 위해서는 확실히 최종 식이 도출되기 위해 필
 **Spectral Graph Theory**
 
 - **https://balcilar.medium.com/struggling-signals-from-graph-34674e699df8**
-
 - **https://web.media.mit.edu/~xdong/talk/BDI_GSP.pdf**
-
 - https://people.orie.cornell.edu/dpw/orie6334/Fall2016/lecture7.pdf
-
 - https://towardsdatascience.com/tutorial-on-graph-neural-networks-for-computer-vision-and-beyond-part-2-be6d71d70f49
-
 - https://arxiv.org/pdf/1210.4752.pdf
-
 - https://openreview.net/pdf?id=CYO5T-YjWZV
-
 - https://balcilar.medium.com/spectral-feature-of-graph-signals-a54a244bab22
 
 **Spectral Graph Convolution**
 
 - https://towardsdatascience.com/spectral-graph-convolution-explained-and-implemented-step-by-step-2e495b57f801
-
-- https://towardsdatascience.com/beyond-graph-convolution-networks-8f22c403955a
-
+- https://towardsdatascience.com/beyond-graph-convolution-networks-8f22c403955
 - https://ai.stackexchange.com/questions/14003/what-is-the-difference-between-graph-convolution-in-the-spatial-vs-spectral-doma
-
 - https://towardsdatascience.com/graph-convolutional-networks-for-geometric-deep-learning-1faf17dee008
-
 - https://towardsdatascience.com/tutorial-on-graph-neural-networks-for-computer-vision-and-beyond-part-2-be6d71d70f49
 
 **Overview**
 
 - https://baekyeongmin.github.io/paper-review/gcn-review/
-
 - https://www.topbots.com/graph-convolutional-networks/?fbclid=IwAR2JLcWELhye46GEWvQu2i_RT2sLGxNpKZNeTXmeFfkLGQs51eE4crLVGRQ
-
 - http://tkipf.github.io/graph-convolutional-networks/
-
 - https://arxiv.org/pdf/1902.07153.pdf
-
 - https://cse291-i.github.io/Lectures/L13_Graph_CNN.pdf
-
 - http://web.cs.ucla.edu/~patricia.xiao/files/Reading_Group_20181204.pdf
-
 - http://dsba.korea.ac.kr/seminar/?mod=document&pageid=1&target=member_display&keyword=JonghyunChoi&uid=1329
 
 **Side Concepts**
 
 - Adjacency: https://en.wikipedia.org/wiki/Adjacency_matrix#Matrix_powers
-
 - Convolution Theorem: https://en.wikipedia.org/wiki/Convolution_theorem
 
 **Laplacian**
@@ -543,8 +525,6 @@ GCN을 이해하기 위해서는 확실히 최종 식이 도출되기 위해 필
 **Implementation**
 
 - https://github.com/dragen1860/GCN-PyTorch/
-
 - https://github.com/zhulf0804/GCN.PyTorch
-
 - https://github.com/tkipf/pygcn/
 

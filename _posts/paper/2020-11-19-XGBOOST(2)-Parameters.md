@@ -1,9 +1,9 @@
 ---
 
-layout: article
+layout: post
 title: "XGBoost: A Scalable Tree Boosting System -(2)Hyperparamter Optimization"
-tags: paper_review
-use_math: true
+tags: [paper_review]
+Date: 2020-11-19
 ---
 
 안녕하십니까. 고려대학교 산업경영공학부 석사과정, DSBA 연구원 윤훈상입니다.

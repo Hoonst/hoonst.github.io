@@ -1,9 +1,9 @@
 ---
 
-layout: article
+layout: post
 title: "XGBoost: A Scalable Tree Boosting System - (1) Concepts"
-tags: paper_review
-use_math: true
+tags: [paper_review]
+date: 2020-11-19
 ---
 
 
