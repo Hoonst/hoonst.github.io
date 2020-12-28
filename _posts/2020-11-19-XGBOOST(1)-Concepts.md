@@ -1,6 +1,6 @@
 ---
 
-layout: article
+layout: post
 title: "XGBoost: A Scalable Tree Boosting System - (1) Concepts"
 tags: paper_review
 use_math: true

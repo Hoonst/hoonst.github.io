@@ -1,6 +1,6 @@
 ---
 
-layout: article
+layout: post
 title: Sentiment Analysis using SVM (feat. Word2Vec / MKV)
 tags: paper_review
 use_math: true

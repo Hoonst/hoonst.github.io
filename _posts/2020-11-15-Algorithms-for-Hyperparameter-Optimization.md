@@ -1,6 +1,6 @@
 ---
 
-layout: article
+layout: post
 title: HyperParameter Optimization Algorithm (feat. GP / TPE)
 tags: paper_review
 mathjax: true

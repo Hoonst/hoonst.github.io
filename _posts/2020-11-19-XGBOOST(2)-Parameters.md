@@ -1,6 +1,6 @@
 ---
 
-layout: article
+layout: post
 title: "XGBoost: A Scalable Tree Boosting System -(2)Hyperparamter Optimization"
 tags: paper_review
 use_math: true
