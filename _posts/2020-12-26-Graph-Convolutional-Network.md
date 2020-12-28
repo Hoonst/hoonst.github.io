@@ -23,9 +23,9 @@ $$L = L_0 + \lambda L_{reg}, with \ L_{reg} = \sum_{i,j} A_{ij} \|f(X_i ) - f(x_
 
 //abss//
 
-$abs$
+\[abc\]
 
-$$abs$$
+\\( 1/x\\)
 
 Notation:
 
