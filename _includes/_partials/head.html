@@ -131,5 +131,7 @@
 {% if site.canonical %}
   <link rel="canonical" href="{{ page.canonical_path | replace: 'index.html', '' | absolute_url }}"/>
 {% endif %}
-
+{% if page.use_math %}
+    {% include mathjax_support.html %}
+{% endif %}
 {% include _partials/head/custom-head.html %}

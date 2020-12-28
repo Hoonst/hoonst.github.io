@@ -3,6 +3,7 @@ layout: post
 title: "Graph Convolutional Network (GCN)"
 Date: 2020-12-26
 tags: [paper_review]
+use_math: true
 ---
 
 **Semi-Supervised Classification with Graph Convolutional Networks - Thomas N.Kipf, Max Welling / ICLR 2017**
@@ -20,9 +21,7 @@ $L = L_0 + \lambda L_{reg}, with \ L_{reg} = \sum_{i,j} A_{ij} \|f(X_i ) - f(x_j
 Notation:
 
 * $L_0$: Graph의 Label이 존재하는 데이터의 supervised loss
-
-* $f(\cdot)$: 미분 함수가 포함된 Neural Network
-
+* f(\cdot)$: 미분 함수가 포함된 Neural Network
 * $\lambda$: weighting factor
 * $X$: 노드들의 feature vector를 담는 $X_i$들의 행렬
 * $\Delta$: $D-A$ 로 나타내며 Graph의 Unnormalized graph Laplacian
