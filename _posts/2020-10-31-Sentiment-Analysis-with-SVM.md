@@ -3,8 +3,7 @@
 layout: article
 title: Sentiment Analysis using SVM (feat. Word2Vec / MKV)
 tags: paper_review
-mathjax: true
-
+use_math: true
 ---
 
 # Semtiment analysis using support vector machines with diverse information sources

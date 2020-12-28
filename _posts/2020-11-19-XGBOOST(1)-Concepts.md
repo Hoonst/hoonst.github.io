@@ -3,8 +3,7 @@
 layout: article
 title: "XGBoost: A Scalable Tree Boosting System - (1) Concepts"
 tags: paper_review
-mathjax: true
-
+use_math: true
 ---
 
 

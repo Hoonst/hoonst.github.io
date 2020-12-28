@@ -18,14 +18,6 @@ use_math: true
 
 $$L = L_0 + \lambda L_{reg}, with \ L_{reg} = \sum_{i,j} A_{ij} \|f(X_i ) - f(x_j)\|^2 = f(X)^T \Delta f(X).$$ ~(1)
 
-/abs/
-
-//abss//
-
-\[abc\]
-
-\\( 1/x\\)
-
 Notation:
 
 * $L_0$: Graph의 Label이 존재하는 데이터의 supervised loss

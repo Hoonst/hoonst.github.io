@@ -3,8 +3,7 @@
 layout: article
 title: "XGBoost: A Scalable Tree Boosting System -(2)Hyperparamter Optimization"
 tags: paper_review
-mathjax: true
-
+use_math: true
 ---
 
 안녕하십니까. 고려대학교 산업경영공학부 석사과정, DSBA 연구원 윤훈상입니다.
@@ -347,6 +346,7 @@ Label은 다음과 같은 비율로 나타나있으며, 자세한 EDA는 [Higgs 
        fn_name="xgb_cv", space=xgb_para, trials=Trials(), algo=tpe.suggest, max_evals=100
    )
    # 100%|██████████| 100/100 [02:50<00:00,  1.70s/trial, best loss: 0.19195183395039705]
+   ```
 # 100%|██████████| 100/100 [11:47<00:00,  7.07s/trial, best loss: 0.09611559999999986]
    ```
 
@@ -365,7 +365,7 @@ Label은 다음과 같은 비율로 나타나있으며, 자세한 EDA는 [Higgs 
    obj.xgb_test(optim_cv, xgb_para)
    # 0.806
    ```
-   
+
    Train Error Loss는 XGBClassifier가 0.19 / xgb.cv가 0.09로 나타나고 있습니다. 이에 대하여 Test Error를 계산해보면 아쉽게도 Cross Validation부분에서 Overfitting이 강하게 일어나서인지 오히려 CV쪽이 성능이 낮아지는 것을 볼 수 있습니다. 
-   
+
    하지만 Test결과로 살펴봤을 때 Cross Validation 사용 유무가 성능에 큰 영향을 주지 않은 것을 살펴볼 수 있습니다. 
