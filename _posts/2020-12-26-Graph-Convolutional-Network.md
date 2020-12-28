@@ -16,7 +16,7 @@ comments: true
 
 본 논문에선 제목에서 살펴볼 수 있듯이, Semi-Supervised Classification, 즉 Labeled / Unlabeled Data가 공존할 때, 두 데이터를 함께 활용하여 분류 문제를 진행하고자 하는 것이며 일반적으로 Labeled Data 쪽이 수가 더 적습니다. 
 
-\L = L_0 + \lambda L_{reg}, with \ L_{reg} = \sum_{i,j} A_{ij} \|f(X_i ) - f(x_j)\|^2 = f(X)^T \Delta f(X).​\ ~(1)
+$L = L_0 + \lambda L_{reg}, with \ L_{reg} = \sum_{i,j} A_{ij} \|f(X_i ) - f(x_j)\|^2 = f(X)^T \Delta f(X).$ ~(1)
 
 Notation:
 
