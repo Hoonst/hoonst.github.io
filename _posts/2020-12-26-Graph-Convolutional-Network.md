@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Graph Convolutional Network (GCN)"
+Mathjax: true
 tags: paper_review
 comments: true
 ---
