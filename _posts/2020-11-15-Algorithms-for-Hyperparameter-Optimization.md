@@ -1,10 +1,8 @@
 ---
-
-layout: article
+layout: post
 title: HyperParameter Optimization Algorithm (feat. GP / TPE)
-tags: paper_review
-mathjax: true
-
+tags: [paper_review]
+date: 2020-11-15
 ---
 # Algorithms for Hyper-Parameter Optimization
 

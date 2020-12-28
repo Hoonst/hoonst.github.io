@@ -345,25 +345,26 @@ Label은 다음과 같은 비율로 나타나있으며, 자세한 EDA는 [Higgs 
    xgb_opt_cv = obj.process(
        fn_name="xgb_cv", space=xgb_para, trials=Trials(), algo=tpe.suggest, max_evals=100
    )
+   # Classification
    # 100%|██████████| 100/100 [02:50<00:00,  1.70s/trial, best loss: 0.19195183395039705]
-   ```
-# 100%|██████████| 100/100 [11:47<00:00,  7.07s/trial, best loss: 0.09611559999999986]
+   # Cross-Validation
+   # 100%|██████████| 100/100 [11:47<00:00,  7.07s/trial, best loss: 0.09611559999999986]
    ```
 
-   **Test**
+​		**Test**	
 
    ```python
-   optimal_hp, trials = xgb_opt_class
-   optim_class = space_eval(xgb_para['cla_params'], optimal_hp)
-   
-   obj.xgb_test(optim_class, xgb_para)
-   # 0.808
-   
-   optimal_hp, trials = xgb_opt_cv
-   optim_cv = space_eval(xgb_para['cv_params'], optimal_hp)
-   
-   obj.xgb_test(optim_cv, xgb_para)
-   # 0.806
+optimal_hp, trials = xgb_opt_class
+optim_class = space_eval(xgb_para['cla_params'], optimal_hp)
+
+obj.xgb_test(optim_class, xgb_para)
+# 0.808
+
+optimal_hp, trials = xgb_opt_cv
+optim_cv = space_eval(xgb_para['cv_params'], optimal_hp)
+
+obj.xgb_test(optim_cv, xgb_para)
+# 0.806
    ```
 
    Train Error Loss는 XGBClassifier가 0.19 / xgb.cv가 0.09로 나타나고 있습니다. 이에 대하여 Test Error를 계산해보면 아쉽게도 Cross Validation부분에서 Overfitting이 강하게 일어나서인지 오히려 CV쪽이 성능이 낮아지는 것을 볼 수 있습니다. 

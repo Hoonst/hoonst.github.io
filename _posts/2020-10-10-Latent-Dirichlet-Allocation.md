@@ -2,7 +2,6 @@
 
 layout: post
 title: Latent Dirichlet Allocation with Python Code Implementation
-tags: paper_review
 tags: [paper_review]
 date: 2020-10-10
 
