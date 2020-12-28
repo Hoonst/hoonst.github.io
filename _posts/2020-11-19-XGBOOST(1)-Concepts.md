@@ -17,7 +17,7 @@ XGBoost는 확실히 저를 포함해 데이터 사이언스 또는 머신러닝
 
 **XGBoost Parameter Search**
 
-XGBoost / LightGBM / CatBoost와 같이 Boosting 알고리즘의 Variations들은 대개 자신들의 알고리즘을 구현해둔 패키지를 함께 제공하는데, 이들은 논문에서 설명한 개념을 사용하기 위한 파라미터들이 많습니다. 대부분 자동적으로 최적의 파라미터를 default로 설정하기는 하지만, 적어도 패키지를 사용할 때 어떤 파라미터를 어떻게 활용하고 있는지에 대한 고찰이 필요합니다. 따라서 이에 대한 정리도 [XGBoost: Parameters](https://hoonst.github.io/2020/11/19/XGBOOST(2)-Parameters.html)에 정리하였습니다.
+XGBoost / LightGBM / CatBoost와 같이 Boosting 알고리즘의 Variations들은 대개 자신들의 알고리즘을 구현해둔 패키지를 함께 제공하는데, 이들은 논문에서 설명한 개념을 사용하기 위한 파라미터들이 많습니다. 대부분 자동적으로 최적의 파라미터를 default로 설정하기는 하지만, 적어도 패키지를 사용할 때 어떤 파라미터를 어떻게 활용하고 있는지에 대한 고찰이 필요합니다. 따라서 이에 대한 정리도 [XGBoost: Parameters](https://hoonst.github.io/XGBOOST(2)-Parameters/)에 정리하였습니다.
 
 ## TREE BOOSTING IN A NUTSHELL
 

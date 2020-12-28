@@ -1,10 +1,8 @@
 ---
-
 layout: post
 title: HyperParameter Optimization Algorithm (feat. GP / TPE)
 tags: paper_review
-mathjax: true
-
+use_math: true
 ---
 # Algorithms for Hyper-Parameter Optimization
 

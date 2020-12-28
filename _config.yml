@@ -23,7 +23,7 @@ baseurl: # the subpath of your site, e.g. "/blog"
 url: # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 logo: # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
-read_time: # reading time estimates, e.g. true
+read_time: true
 words_per_minute: # 200
 
 google_fonts:
@@ -55,8 +55,8 @@ feed:
   path: atom.xml
 
 # Pagination - https://jekyllrb.com/docs/pagination/
-# paginate: 10
-# paginate_path: /page:num/
+paginate: 10
+paginate_path: /page:num/
 
 # Search
 search_full_content: false # can have performance implications for large sites
@@ -94,8 +94,8 @@ defaults:
       share: true
 
 # Site Author
-author:
-  name:
+author: Hoonst
+  name: Yoon Hoon Sang
   picture:
   email:
   twitter:
