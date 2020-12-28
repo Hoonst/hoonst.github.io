@@ -11,24 +11,6 @@ date: 2020-10-10
 
 <img src="/assets/2020-10-10-Latent-Dirichlet-Allocation/image-20201011190205573.png" alt="image-20201011190205573" style="zoom: 33%;" />
 
-## 목차
-
-* 서문
-
-* Introduction
-
-* Notation & Terminology
-
-* Latent Dirichlet Allocation
-
-* LDA and Exchangeability
-
-* Relationship with other latent variable models
-
-* Inference and Parameter Optimization
-
-* Coding LDA with Gibbs Sampling from scratch
-
 **참고 논문** 
 
 * LDA Original Paper: [Latent Dirichlet Allocation](https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf)
