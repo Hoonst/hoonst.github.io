@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Graph Convolutional Network (GCN)"
+title: Graph Convolutional Network (GCN)
 Date: 2020-12-26
 tags: [paper_review]
 use_math: true
