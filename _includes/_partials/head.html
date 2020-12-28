@@ -96,10 +96,6 @@
   <meta property="fb:app_id" content="{{ site.facebook_sdk.app_id }}" />
 {% endif %}
 
-{% if page.use_math %}
-  {% include mathjax_support.html %}
-{% endif %}
-
 {% assign twitter_id = site.twitter %}
 {% assign google_plus = site.google_plus %}
 {% assign fb_admins = site.fb_admins %}
@@ -136,3 +132,6 @@
 {% endif %}
 
 {% include _partials/head/custom-head.html %}
+{% if page.use_math %}
+  {% include mathjax_support.html %}
+{% endif %}
