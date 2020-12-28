@@ -1,6 +1,6 @@
 ---
 
-layout: post
+layout: posts
 title: Latent Dirichlet Allocation with Python Code Implementation
 tags: paper_review
 
