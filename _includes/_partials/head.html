@@ -69,6 +69,9 @@
 
 <link href="{{ site.css | relative_url }}/main.css?v={{ site.version }}" rel="stylesheet" type="text/css" />
 
+{% if page.use_math %}
+  {% include mathjax_support.html %}
+{% endif %}
 {% if page.keywords %}
   <meta name="keywords" content="{{ page.keywords }}" />
 {% elsif page.tags and page.tags | size != 0 %}
@@ -125,11 +128,9 @@
     }
   };
 </script>
-<script>
-{% if page.use_math %}
-  {% include mathjax_support.html %}
-{% endif %}
-</script>
+
+
+
 {% comment %} Canonical, good for google search engine (SEO) : https://support.google.com/webmasters/answer/139066 {% endcomment %}
 {% if site.canonical %}
   <link rel="canonical" href="{{ page.canonical_path | replace: 'index.html', '' | absolute_url }}"/>
