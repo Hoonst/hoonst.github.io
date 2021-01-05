@@ -13,6 +13,69 @@ comments: true
 
 <img src="/assets/2020-12-26-Graph-Convolutional-Network.assets/1*Y3IcRT75O6f2NC9BFGhq3g.png" alt="Understanding Graph Convolutional Networks for Node Classification | by  Inneke Mayachita | Towards Data Science" style="zoom:50%;" />
 
+## Background
+
+### Graph Neural Network (GNN)
+
+맨 처음 GNN의 존재를 알았을 때, 처음으로 든 생각은 GNN은 Neural Network와 대응된다는 것이었습니다. 따라서, GNN이 기반으로 존재하고 각각 상황에 맞게, 이미지를 처리할 때는 Conv-GNN을, Sequence Data를 처리할 때는 Rec-GNN을 사용하는 줄 알았으며 이에 GNN이라는 알고리즘이 따로 존재하는 듯 하였습니다. 하지만 Survey 논문을 읽어본 결과, GNN은 단순히 하나의 특정 알고리즘을 칭하는 것이 아니라 Graph를 Input으로 활용하고 이를 분석하기 위하여 사용되는 모든 Neural Network기반 알고리즘을 GNN이라고 칭하는 것이었습니다. 
+
+GNN으로 달성하고자 하는 목적은 일반적인 Dataframe보다 객체간의 관계를 더 잘 반영하는 데이터 꼴인 Graph를 입력으로 사용하여 Neural Network를 통과시켜 Node, Edge 또는 Graph 자체에 대한 Classification을 하는 것입니다. 역사적으로 살펴보자면, Recurrent GNN이 먼저 사용이 되었으며, 이어 GCN / GAE / STGNN과 같은 다양한 Variation들이 나타났습니다. 
+
+### Convolutional Neural Network (CNN)
+
+CNN은 이미 많은 분들이 아실거라 생각하여 간략하게만 서술하자면, 주로 이미지 데이터에 많이 쓰여, Kernel / Filter를 사용해 전체 이미지를 순회하여 픽셀의 정보를 Aggregate하는 과정을 거치는 기법을 말합니다. 저는 RNN을 공부하면서, Recurrent이라는 단어가 기법을 매우 잘 표현하고 있다고 생각했지만, Convolution에 대해서는 딱히 생각을 해본 적이 없습니다. 하지만 본 GCN을 이해함에 있어 Convolution이라는 개념에 대해서 알 필요가 있습니다.
+
+**Convolution**
+
+Convolution은 깊게 들어가면 범위가 매우 커 간략하게만 언급하자면 "두 함수의 합성곱"입니다. 식의 꼴로는
+
+$f \star g = (f * g)(t) \int_\infty^\infty f(t)g(t-\tau) d\tau$ 로 나타낼 수 있습니다. 
+
+* 정의: 두 함수 f,g가운데 하나의 함수를 반전, 전이 시킨 다음, 다른 하나의 함수와 곱한 결과를 적분하는 것을 의미한다.
+* 풀이: 현재 시점의 합성곱의 값은 이전시간의 결과를 포함하여 구성된다.
+
+정의는 [Wikipedia](https://ko.wikipedia.org/wiki/%ED%95%A9%EC%84%B1%EA%B3%B1)에서 가져온 것이나 이를 저 나름의 풀이를 진행한 것이 정의 아래 나타나 있습니다. 이는 확실히 난해하여 예시를 통해 살펴 보겠습니다.
+
+**재야의 종소리** [참고: 네이버 블로그](https://m.blog.naver.com/PostView.nhn?blogId=sallygarden_ee&logNo=221291514981&proxyReferer=https:%2F%2Fwww.google.com%2F)
+
+2020년은 '대 코로나 시대'로 였기에 아쉽게도 한 해를 마무리 하는 재야의 종소리를 실제로 보지 못하였습니다. 하지만 해당 종소리는 많은 분들이 익히 기억나실거라 생각합니다. 종을 맨 처음 '둥'치면 해당 타격에 의한 소리가 크게 울리면서 점차 감소할 것이며, 이는 아래의 꼴과 같습니다.
+
+<img src="../assets/2020-12-26-Graph-Convolutional-Network.assets/image-20210103111119779.png" alt="image-20210103111119779" style="zoom:30%;" />
+
+그럼 이번에는 종을 두 번째로 치는데 처음 타격보다 약간 작게 치도록 하겠습니다. 
+
+![image-20210103111539067](../assets/2020-12-26-Graph-Convolutional-Network.assets/image-20210103111539067.png)
+
+두 번째 종소리는 첫 번째 종소리보다 작을 것이며 이는 위의 그림과 같이 표현할 수 있습니다. 그렇다면 우리의 청력은 두 소리를 완벽하게 구분할 수 없으므로, 두 소리가 합쳐진 소리가 들릴 것이며 이는 우측 그림의 파란색 선으로 표현할 수 있습니다. 따라서 하나의 함수 결과를 return하기 위하여 두 함수가 합쳐지는 것을 볼 수 있으며, 파란색 선이 합성곱의 결과라고 할 수 있습니다. 
+
+확실히 개념이 생각보다 복잡하여 이만 줄이고자 하지만, 핵심은
+
+"Convolution이 이미지에서만 사용되는 개념이 아니며 더 광범위하게 사용되는 것"임을 알아 두셨으면 좋겠습니다. 이는 이미지 데이터가 아닌 Graph 데이터에 Convolution을 적용하는 것에 대하여 이해할 수 있는 수단이 될 수 있기 때문입니다. 
+
+**Graph Convolution**
+
+그럼 이제 Convolution이 Graph에 왜 필요한지에 대해서 생각을 해봐야 합니다. 그래프는 매우 유기적인 데이터 구조입니다. 하나의 노드는 단순히 자기 자신으로만 존재하는 것이 아니라 다른 이웃 노드들의 존재에 의해서 정의됩니다. 마치 사회의 일원처럼 말입니다. 따라서 Convolution과 같이 자신(Central Node) 주위에 있는 이웃 노드들의 정보를 한 데로 Aggregate하는 과정이 해당 연산을 빠르게 처리해줄 것이기에 합성곱 연산이 필요한 것입니다. 
+
+<img src="../assets/2020-12-26-Graph-Convolutional-Network.assets/image-20210103115239161.png" alt="image-20210103115239161" style="zoom:33%;" />
+
+위의 그림은 좌측이 이미지 데이터에 대한 Convolution / 우측이 Graph Convolution을 나타냅니다. Convolution Filter는 본디 모든 데이터에 공통으로 사용되므로 regular grid형태로 나타납니다. 일반적인 CNN의 Filter를 생각해보면 알 수 있습니다. 하지만 우측의 Graph에서 살펴보게 되면, 일단 Grid 형태가 아닌 것은 차치하더라도, 모든 노드가 자신의 이웃에 대하여 Convolution Filter를 씌울 때, 해당 Filter의 크기가 모두 제각각일 것입니다. 
+
+하지만 Convolution은 Graph에 사용하기를 포기하기엔 매우 좋은 특징들을 갖고 있습니다.
+
+* Convolution을 통해 전체 데이터에서 Local Feature를 뽑아낼 수 있다.
+* Filter들이 Spatial Location에 따라 변하지 않는다.
+
+따라서 Convolution을 Graph에 적용하기 위해 Convolution Theorem을 사용하고자 합니다. 
+Convolution Theorem이란 다음과 같이 정의됩니다.
+
+* 한 Domain의 Convolution은 다른 Domain의 Point-wise Multiplication과 같다
+* Graph Domain의 Convolution은 Fourier Domain의 Point-wise Multiplication과 같다.
+* Convolution의 Laplace 변환은 Point-wise Multiplication으로 변한다.
+
+Convolution Theorem을 기반으로 Graph 내에서는 Convolution을 진행할 수 있게 되며, 이는 Fourier Transform을 기반으로 진행되게 됩니다. 
+
+
+
 ## Introduction
 
 본 논문에선 제목에서 살펴볼 수 있듯이, Semi-Supervised Classification, 즉 Labeled / Unlabeled Data가 공존할 때, 두 데이터를 함께 활용하여 분류 문제를 진행하고자 하는 것이며 일반적으로 Labeled Data 쪽이 수가 더 적습니다. 
@@ -39,19 +102,16 @@ Notation:
 
 ## Fast Approximate Convolutions on Graphs
 
-GCN은 결국 다음과 같은 식으로 정리됩니다.
+GCN에서 Convolution에 해당하는 정의를 다음과 같이 표현하게 됩니다.
 
 $H^{(l+1)} = \sigma (\tilde D^{-1/2} \tilde A \tilde D^{-1/2} H^{(l)}W^{(l)})$ ~(2)
 
 로서 매 Hidden Layer와 layer-wise propagation rule을 정의합니다. 
 
 * $\tilde A = A + I_N$: 자기 자신과의 관계까지 포함하는 Adjacency Matrix로서 기존의 Adjacency Matrix에서 Identity Matrix도 대각선 부분을 1로 채워 표현합니다.
-
 * $\tilde D_{ii} = \sum_j \tilde A_{ij}$: Degree Matrix를 Adjacency Matrix의 하나의 열을 통합하여 나타냅니다. 이 때 주의해야 할 점은 $A$ 에 대한 식이 아닌 $\tilde A$ 에 대한 식이기에 자기 자신과의 관계까지 포함하여 기존 Degree보다 +1이 더 추가됩니다.
-
 * $H^{(l)} \in R^{N \times D}: l^{th} \ Layer \ Activation \ Matrix$
 
-  
 
 하지만 (2)번 식의 꼴을 나타내기 위해선 본 챕터에서부터 설명하는 유도를 거치게 되는데, 간략하게 설명해보자면
 
