@@ -40,19 +40,19 @@ Path는 한 노드에서 다른 노드로 도착하기 위해서 거쳐야 하�
 
 * **Distance**
 
-  Path 중에서 가장 짧은 Path를 Distance라고 정의하며, 만일 연결되어 있지 않다면 0이나 무한대로 나타냅니다. 
-
-  비방향성 그래프는 Distance가 $h_{A,B} / h_{B,A}$가 같지만, 방향성 그래프는 다를 수 있기에 Distance가 대칭의 꼴이 아닙니다.
+  Path 중에서 가장 짧은 Path를 Distance라고 정의하며, 만일 연결되어 있지 않다면 0이나 무한대로 나타냅니다. 비방향성 그래프는 Distance가 $h_{A,B} / h_{B,A}$가 같지만, 방향성 그래프는 다를 수 있기에 Distance가 대칭의 꼴이 아닙니다.
 
 <img src="/assets/2021-01-06-Properties-of-Networks-Random-Graph-Models.assets/image-20210106180453074.png" alt="image-20210106180453074" style="zoom:67%;" />
 
-	* **Diameter**
 
-​		Diameter는 Distance(shortest path) 중에서 가장 큰 Distance입니다. 최단 거리 중 가장 크다는 뜻은 전체 그래프 사이즈와도 연관이 되기에 Diameter라고 표현한 듯 싶습니다.		
+
+* **Diameter**
+
+  Diameter는 Distance(shortest path) 중에서 가장 큰 Distance입니다. 최단 거리 중 가장 크다는 뜻은 전체 그래프 사이즈와도 연관이 되기에 Diameter라고 표현한 듯 싶습니다.	
 
 * **Average Path Length**
 
-Diameter는 최대 Distance를 나타낸 것과 다르게, Average Path Length는 단순히 Distance의 평균을 나타내는 것입니다.
+  Diameter는 최대 Distance를 나타낸 것과 다르게, Average Path Length는 단순히 Distance의 평균을 나타내는 것입니다.
 
 ## Clustering Coefficient (for undirected graphs)
 
@@ -156,7 +156,7 @@ Random Graph Model에서 두 노드가 연결될 확률은 p로 나타납니다.
 
 처음 강의를 듣게 되면 흐름과 다소 걸맞지 않게 Expansion이 등장하는데, Expansion이라는 단어 자체의 의미인 '확장'이라는 뜻을 곱씹어보면 흐름이 자동적으로 생긴다고 생각합니다. 또한 뒤에서 Random Graph의 크기 (노드의 개수)가 증가할수록 나타나는 변화를 나타내는데, 이를 통해 Random Graph가 점차 증가하는 모습을 Expansion의 가정으로 두어야 합니다. 하지만 기존 그래프에서 노드를 추가한다는 의미라기보다, 전체 Vertex Set V에서 소그룹 S를 분리하고, 해당 S에서 그래프 내의 다른 노드로 확장한다는 의미로 생각하시면 될 것입니다. 마치 Tree꼴의 Graph가 Root에서 BFS / DFS 와 같은 기법으로 뿌리를 내려가는 것과 같습니다. Expansion에 대한 수식은 다음과 같습니다. 
 
-$\alpha = min_{S \subseteq V}\frac {\# edges\ leaving\ S} { min(\|S\|, \| V / S \|)}$
+$\alpha = min_{S \subseteq V} \frac{\# edges\ leaving\ S}{min(\|S\|, \| V - S \|)}$
 
 분모의 경우 S 또는 S가 빠진 V 중, 더 작은 것을 고른다고 하는데 이유는 '더 작은 것을 골라야 반칙이 아니다?' 라고 설명하셔서 의미를 잘 파악하지 못하겠습니다. 그 중에서 제가 생각해본 의의는 Expansion이라는 것이 작은 그룹에서 큰 그룹으로 확장을 해야하기 때문에 작은 것을 분모에 포함시키는 것이 아닌가 라는 추측을 남깁니다.
 
