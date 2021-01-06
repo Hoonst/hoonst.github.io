@@ -18,17 +18,21 @@ CS224W 2번째 강의 정리를 정리해보았습니다. 강의에서 사용된
 
 하나의 Network을 파악하고 다른 Network와 구분할 수 있는 특징들은 다음과 같습니다. 지금부터 설명하는 특징들은 Undirected Graph를 대상으로 나타내는 것이며, Directed Graph에 대해 특별히 설명할 경우 언급하겠습니다.
 
-* **Degree Distribution**, $P(k)$ : Random하게 선택한 Node가 degree $k$를 가질 확률입니다. Degree는 하나의 노드에 몇개의 Edge가 달려있느냐를 표현합니다. 
+## Degree Distribution, $P(k)$
 
-  $N_k$ = 하나의 노드의 Degree $k$
+Random하게 선택한 Node가 degree $k$를 가질 확률입니다. Degree는 하나의 노드에 몇개의 Edge가 달려있느냐를 표현합니다. 
 
-  $P(k) = N_k /N$: Normalized Histogram
+$N_k$ = 하나의 노드의 Degree $k$
 
-  Directed Graph같은 경우에는 in- / out-degree distribution이 따로 존재합니다.
+$P(k) = N_k /N$: Normalized Histogram
+
+Directed Graph같은 경우에는 in- / out-degree distribution이 따로 존재합니다.
 
 <img src="/assets/2021-01-06-Properties-of-Networks-Random-Graph-Models.assets/image-20210106175313762.png" alt="image-20210106175313762" style="zoom:50%;" />
 
-* Path: Path는 한 노드에서 다른 노드로 도착하기 위해서 거쳐야 하는 노드들의 Sequence를 말합니다. 다음과 같은 그래프가 있을 때, A와 G의 Path를 계산한다면, 여러 Path가 존재하겠지만 ACBDCDEG와 같이 나타낼 수 있고, 이는 같은 노드를 여러 번 방문할 수 있음을 알 수 있습니다.
+## Path
+
+Path는 한 노드에서 다른 노드로 도착하기 위해서 거쳐야 하는 노드들의 Sequence를 말합니다. 다음과 같은 그래프가 있을 때, A와 G의 Path를 계산한다면, 여러 Path가 존재하겠지만 ACBDCDEG와 같이 나타낼 수 있고, 이는 같은 노드를 여러 번 방문할 수 있음을 알 수 있습니다.
 
 ![image-20210106175824857](/assets/2021-01-06-Properties-of-Networks-Random-Graph-Models.assets/image-20210106175824857.png)
 
@@ -36,40 +40,40 @@ CS224W 2번째 강의 정리를 정리해보았습니다. 강의에서 사용된
 
 * **Distance**
 
-Path 중에서 가장 짧은 Path를 Distance라고 정의하며, 만일 연결되어 있지 않다면 0이나 무한대로 나타냅니다. 
+  Path 중에서 가장 짧은 Path를 Distance라고 정의하며, 만일 연결되어 있지 않다면 0이나 무한대로 나타냅니다. 
 
-비방향성 그래프는 Distance가 $h_{A,B} / h_{B,A}$가 같지만, 방향성 그래프는 다를 수 있기에 Distance가 대칭의 꼴이 아닙니다.
+  비방향성 그래프는 Distance가 $h_{A,B} / h_{B,A}$가 같지만, 방향성 그래프는 다를 수 있기에 Distance가 대칭의 꼴이 아닙니다.
 
 <img src="/assets/2021-01-06-Properties-of-Networks-Random-Graph-Models.assets/image-20210106180453074.png" alt="image-20210106180453074" style="zoom:67%;" />
 
-​		**Diameter**
+	* **Diameter**
 
 ​		Diameter는 Distance(shortest path) 중에서 가장 큰 Distance입니다. 최단 거리 중 가장 크다는 뜻은 전체 그래프 사이즈와도 연관이 되기에 Diameter라고 표현한 듯 싶습니다.		
 
-**Average Path Length**
+* **Average Path Length**
 
 Diameter는 최대 Distance를 나타낸 것과 다르게, Average Path Length는 단순히 Distance의 평균을 나타내는 것입니다.
 
-* Clustering Coefficient (for undirected graphs)
+## Clustering Coefficient (for undirected graphs)
 
-  $i$ 번째 노드의 Clustering Coef.란 $i$의 이웃끼리의 연결의 강도를 나타냅니다.
+$i$ 번째 노드의 Clustering Coef.란 $i$의 이웃끼리의 연결의 강도를 나타냅니다.
 
-  $C_i = \frac {2e_i} {k_i(k_i -1)}$로 나타내게 되며 
+$C_i = \frac {2e_i} {k_i(k_i -1)}$로 나타내게 되며 
 
-  * $e_i$가 이웃간에 연결된 edge 개수이며, 
-  * $k_i$는 이웃의 개수입니다.
+* $e_i$가 이웃간에 연결된 edge 개수이며, 
+* $k_i$는 이웃의 개수입니다.
 
-  따라서 $k_i(k_i-1)$는 $k_i$개의 노드가 서로를 연결하는 Edge의 최대 개수를 말합니다. 최종적으로 식이 나타내는 의미는 *'이웃끼리 최대로 연결할 수 있는 Edge에 비해, 현재 연결되어 있는 정도는 얼마냐?'*입니다.N개의 노드에 대하여 Average clustering coefficient는 $C = \frac {1}{N} \sum\limits_i^N c_i$입니다.
+따라서 $k_i(k_i-1)$는 $k_i$개의 노드가 서로를 연결하는 Edge의 최대 개수를 말합니다. 최종적으로 식이 나타내는 의미는 *'이웃끼리 최대로 연결할 수 있는 Edge에 비해, 현재 연결되어 있는 정도는 얼마냐?'*입니다.N개의 노드에 대하여 Average clustering coefficient는 $C = \frac {1}{N} \sum\limits_i^N c_i$입니다.
 
-  ![image-20210106182013893](/assets/2021-01-06-Properties-of-Networks-Random-Graph-Models.assets/image-20210106182013893.png)
+![image-20210106182013893](/assets/2021-01-06-Properties-of-Networks-Random-Graph-Models.assets/image-20210106182013893.png)
 
 <img src="/assets/2021-01-06-Properties-of-Networks-Random-Graph-Models.assets/image-20210106182147756.png" alt="image-20210106182147756" style="zoom:67%;" />
 
-* Connectivity
+## Connectivity
 
-  Connectivity는 '연결'의 정도를 나타내며, Largest Connected Component라 함은 가장 많은 노드들이 연결되어 있는 그래프라고 할 수 있습니다. 아래의 그림과 같이, ABCD가 묶여 있는 Component가 가장 크다고 할 수 있습니다.
+Connectivity는 '연결'의 정도를 나타내며, Largest Connected Component라 함은 가장 많은 노드들이 연결되어 있는 그래프라고 할 수 있습니다. 아래의 그림과 같이, ABCD가 묶여 있는 Component가 가장 크다고 할 수 있습니다.
 
-  <img src="/assets/2021-01-06-Properties-of-Networks-Random-Graph-Models.assets/image-20210106183041943.png" alt="image-20210106183041943" style="zoom: 67%;" />
+<img src="/assets/2021-01-06-Properties-of-Networks-Random-Graph-Models.assets/image-20210106183041943.png" alt="image-20210106183041943" style="zoom: 67%;" />
 
 # MSN Messenger
 
