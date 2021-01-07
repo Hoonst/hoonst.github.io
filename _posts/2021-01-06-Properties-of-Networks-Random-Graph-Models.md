@@ -42,7 +42,7 @@ Path는 한 노드에서 다른 노드로 도착하기 위해서 거쳐야 하�
 
   Path 중에서 가장 짧은 Path를 Distance라고 정의하며, 만일 연결되어 있지 않다면 0이나 무한대로 나타냅니다. 비방향성 그래프는 Distance가 $h_{A,B} / h_{B,A}$가 같지만, 방향성 그래프는 다를 수 있기에 Distance가 대칭의 꼴이 아닙니다.
 
-<img src="/assets/2021-01-06-Properties-of-Networks-Random-Graph-Models.assets/image-20210106180453074.png" alt="image-20210106180453074" style="zoom:67%;" />
+  <img src="/assets/2021-01-06-Properties-of-Networks-Random-Graph-Models.assets/image-20210106180453074.png" alt="image-20210106180453074" style="zoom:67%;" />
 
 
 
