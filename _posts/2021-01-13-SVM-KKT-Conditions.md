@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "SVM & KKT Conditions"
-description: "SVM & KKT Conditions"
+title: "SVM-KKT Conditions"
+description: "SVM-KKT Conditions"
 tags: [assignment]
 date: 2021-01-13
 comments: true
