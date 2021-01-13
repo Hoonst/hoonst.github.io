@@ -14,7 +14,7 @@ CS224W 4번째 강의 정리를 정리해보았습니다. 강의에서 사용된
 
 # Network & Communities
 
-![image-20210110105232677](/assets/2021-01-10-CS224W-Community-Strucutre-in-Networks.assets/image-20210110105232677.png)
+![image-20210113113717779](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210113113717779.png)
 
 위와 같은 네트워크 그림을 보게 되면, 그 안에 존재하는 Subgroup이 Community라는 것입니다. 즉, 노드들의 집합이라고 말할 수 있으며, 강의에서는 이에 대해서 먼저 설명하지 않고 본격적으로 Community를 설명하기 전에 사전 지식을 전달합니다.
 
@@ -142,7 +142,7 @@ Granovetter의 이론을 정리하면 다음과 같습니다.
 
 **Example: Zachary's Karate club network**
 
-<img src="/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210111224742595.png" alt="image-20210111224742595" style="zoom:50%;" />
+![image-20210113113540761](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210113113540761.png)
 
 해당 예시는 뭔가 웃픈 썰이 포함되어 있는 네트워크로서, **Wayne W. Zachary**의 "An Information Flow Model for Conflict and Fission in Small Groups" 논문에서 예시로 사용된 Social Network입니다. 이는 대학 내의 Karate Club 내에서 발생한 Social Network 분화 예시인데, 아쉽게도 어느 대학교인지는 명시가 되어있지 않습니다. 간단하게 포함된 이야기를 전달드리자면, 34명의 Karate club member들 중 Administrator "John A"와 Instructor "Mr.Hi (가명)"간에 갈등이 발생한 후, "Mr.Hi"파와 "비 Mr.Hi"파로 나뉘게 된 사건입니다. 이로 인해, 위의 그래프를 살펴보면, 1번 중심의 Network와 34번 중심의 Cluster가 형성된 것을 볼 수 있으며, Edge들로 학생들간의 관계를 표현한 것입니다. 이 때, 그래프의 Structure를 통해 특정 멤버가 두 집단 중 어떤 집단으로 흘러 들어갈지 예상할 수 있습니다.
 
@@ -249,7 +249,7 @@ $p(u,v) = 1- \prod\limits_{c\in M_u \cap M_v} (1-p_c)$
 
 이는 Maximum Likelihood Estimation으로 가능합니다. 
 
-![image-20210112010001363](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210112010001363.png)
+![image-20210113113654667](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210113113654667.png)
 
 해당 MLE 식에 대한 과정은, 
 
