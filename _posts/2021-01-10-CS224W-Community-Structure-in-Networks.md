@@ -133,3 +133,132 @@ Granovetter의 이론을 정리하면 다음과 같습니다.
 * Community 내의 Edge는 Strong Structural / Interpersonal Edge, High Edge Overlap
 * Community를 잇는 Edge는 Weak Structural / Interpersonal Edge, Low Edge Overlap
 * 사회학자가 정리한 이론이며 실험도 Social Network에 적용해 도출한 결론이지만, Graph 전체에 적용되는 이론이다.
+
+# Network Communities
+
+위의 Geranovetter 이론을 토대로 한다면, Network는 강하게 연결된 노드들의 집합이며, Network 내의 Internal Connection이 많고, 적은 수의 External Connection이 있습니다. 그럼 이제는 다음과 같은 문제를 풀 때입니다.
+
+> 자동적으로 밀접하게 연결된 Node 집단을 어떻게 찾는가?
+
+**Example: Zachary's Karate club network**
+
+<img src="/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210111224742595.png" alt="image-20210111224742595" style="zoom:50%;" />
+
+해당 예시는 뭔가 웃픈 썰이 포함되어 있는 네트워크로서, **Wayne W. Zachary**의 "An Information Flow Model for Conflict and Fission in Small Groups" 논문에서 예시로 사용된 Social Network입니다. 이는 대학 내의 Karate Club 내에서 발생한 Social Network 분화 예시인데, 아쉽게도 어느 대학교인지는 명시가 되어있지 않습니다. 간단하게 포함된 이야기를 전달드리자면, 34명의 Karate club member들 중 Administrator "John A"와 Instructor "Mr.Hi (가명)"간에 갈등이 발생한 후, "Mr.Hi"파와 "비 Mr.Hi"파로 나뉘게 된 사건입니다. 이로 인해, 위의 그래프를 살펴보면, 1번 중심의 Network와 34번 중심의 Cluster가 형성된 것을 볼 수 있으며, Edge들로 학생들간의 관계를 표현한 것입니다. 이 때, 그래프의 Structure를 통해 특정 멤버가 두 집단 중 어떤 집단으로 흘러 들어갈지 예상할 수 있습니다.
+
+## Modularity
+
+> 자동적으로 밀접하게 연결된 Node 집단을 어떻게 찾는가?
+
+이 문장에서 "밀접하게 연결된"이라는 말에 대해서 정의를 내려야합니다. 이는 Modularity로 나타내며 이름에서 특징을 유추할 수 있는데, "얼마나 잘 Module화"되어 있는가, 즉, Network가 Community들로 잘 나누어져 있는가에 대한 정의입니다. 
+
+Modularity는 Q로 나타내며, Network를 disjoint community $s\in S$로 나눌 수 있다고 할 때,
+
+![image-20210111231007327](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210111231007327.png)
+
+위와 같은 식으로 나타낼 수 있습니다. 즉, 풀어서 나타내보면
+
+> Network 내의 Community들에 대하여, Community 내의 Edge 개수와 Null Model의 Expected Edge 개수의 차로 Modularity를 나타낸다.
+
+라고 표현할 수 있으며, 예상보다 실제의 Cluster 내의 Edge 값이 클수록 Community가 잘 구성되었다는 뜻입니다. 그럼 이 개념을 정립하기 위하여 Null Model인 Configuration Model을 생성해야 합니다. 
+
+
+
+# Louvain Algorithm
+
+지금까지는 Network의 Community가 잘 생성되었는지에 대한 Evaluation만 진행하였으며, 이는 Modularity로 가능했습니다. 그렇다면 실제로 Community를 탐색하는 과정은 어떻게 되는지 알아볼 것이며 먼저 Louvain Algorithm을 살펴보겠습니다. 
+
+## Louvain Algorithm 특징
+
+알고리즘의 난도가 그렇게 크게 어렵지 않기 때문에 특징을 먼저 서술하겠습니다.
+
+* 계산복잡도: $O(nlogn)$
+* Greedy Algorithm for community detection
+* Weighted Graphs 사용 가능하다.
+* Hierarchical Community를 표현할 수 있다.
+
+* 특히 Large Network에 많이 사용되는데,
+  * 수렴 속도가 빠르고
+  * 높은 Modularity output을 return한다.
+
+Louvain Algorithm은 "탐욕적으로(Greedily)" Modularity를 최대화하는 과정으로 진행됩니다. 한번의 Pass 당 2개의 Phase를 거치게 되는데,
+
+<img src="/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210111232559355.png" alt="image-20210111232559355" style="zoom:50%;" />
+
+* Phase 1: Modularity Optimization
+  하나의 Node의 이웃들에 대하여 Community를 형성하여 Modularity를 Update한다.
+* Phase 2: Community Aggregation
+  Phase 1에서 생성한 Community를 모아모아 Super node를 형성하여 새로운 Network를 생성한다.
+
+위의 그림에서 살펴보면, Phase 1 / 2를 통과한 것이 1st pass를 거친 것임을 표현하고 있습니다. 해당 Pass들은 더 이상 Community를 생성함으로써 발생하는 Modularity의 증가가 나타나지 않을 때 더 이상 진행하지 않게 됩니다. 
+
+Louvain Algorithm에 대하여 간단하게만 알고 싶다면, 지금부터 설명하는 수식에 대해서 빠르게 넘어가셔도 됩니다. 
+
+**Louvain Algorithm 빨간맛**
+
+* Graph 내의 모든 노드를 Distinct한 Community로 간주한다. (노드당 1 Community)
+* 각 노드 $i$마다, 다음의 계산을 진행합니다. 
+  * $i$를 이웃 $j$의 Community에 포함시켰을 때, Modularity Delta ($\Delta Q$)를 계산한다.
+  * $\Delta Q$의 변화량이 가장 큰 $j$의 Community에 $i$를 포함시킨다.
+  * 이런 방식으로 진행할 경우, 당연히 순서에 의해 구성되는 Cluster가 다를 수 있는데 연구 결과, 순서가 큰 영향을 주지는 않는다고 한다.
+
+결과적으로 풀어서 적어보자면, Node들이 현재 속한 Community에서 다른 Community로 소속을 변경했을 때의 Modularity Gain을 구해야 하며, 하나의 노드들이 소속이 없을 때도, 개별적으로 Community를 형성하므로, 소속 변경의 의미가 유지가 됩니다. 
+
+![image-20210111235724136](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210111235724136.png)
+
+$i$ 노드가 $C$로 소속 변경을 했을때, Modularity의 변화 또는 Gain은 위의 식으로 표현할 수 있습니다.
+
+
+
+# Detecting Overlapping Communities: BigCLAM
+
+지금까지 살펴본 Louvain Algorithm은 Non-overlapping Communities에 적용되는 알고리즘입니다. Overlapping과 Non-overlapping community의 차이를 살펴보면 아래의 그림과 같이 '겹치는 부분'이 존재하느냐, 그렇지 않느냐의 차이입니다.
+
+![image-20210112000832270](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210112000832270.png)
+
+두 Community Overlapping 차이는 Adjacency Matrix에서도 나타나며, 해당 Matrix도 Overlapping의 유무로 차이를 비교할 수 있습니다.
+
+즉, Louvain에서는 Overlapping을 다루지 않기에, 저 중간의 빨간 노드들에 대하여 정의를 내릴 수 없으며, 분명 겹치는 노드들이지만, 계산 상 둘 중의 하나의 Community에 Discriminative하게 포함이 될 것입니다 (0/1). 따라서, BigCLAM Model에서는 Community Affiliation Graph Model (AGM)이라는 **Generative Model**을 구축한 뒤에, 해당 모델을 통해 Node들의 Community를 지정하여, Communities를 그리게 될 것입니다. Affiliation이라는 단어 뜻이 '제휴'라는 뜻이므로, 겹치는 부분에 대한 정의를 내포하고 있음을 알 수 있습니다. 
+
+<img src="/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210112001447172.png" alt="image-20210112001447172" style="zoom:50%;" />
+
+먼저 개괄적으로 AGM의 절차에 대해 안내해 드리자면 다음과 같습니다.
+
+* **Step 1**
+  Node Community Affiliations, 즉 Community간의 교집합에 기저한 Generative Model을 정의한다 $\Rightarrow$ Community Affilication Graph Model(AGM)
+* **Step 2**
+  * Graph G가 존재할 때, AGM으로 G가 생성되었다는 가정 아래,
+  * G를 생성했을 가장 좋은 AGM을 찾는다.
+  * 이를 통해 Community를 찾을 수 있다.
+
+AGM으로 표현되는 Generative Model은 Parameter $(V, C, M, \{{p_c}\})$를 갖고 있습니다. 
+
+* $V$: Vertex
+* $C$: Community
+* $M$: Membership - Vertex가 어떤 Community에 Member인가?
+* $\{{p_c}\}$: 각 Community $c$ 내에 있는 노드들은 $p_c$의 동전 던지기 확률로 서로를 연결한다.
+  이 중 여러 Community에 Membership을 갖고 있는 Node는 Membership만큼 동전 던지기를 할 수 있다. 
+
+이를 통해 하나의 Community 내에 있는 Node $u,v$가 연결될 확률 $p(u,v)$는 다음과 같이 표현할 수 있습니다.
+
+$p(u,v) = 1- \prod\limits_{c\in M_u \cap M_v} (1-p_c)$
+
+해당 식을 읽어보면, 일단 $c\in M_u \cap M_v$가 있기 때문에 두 노드 $u,v$ 간의 멤버십이 교집합인 cluster에 대하여, 곱 연산을 합니다. 따라서, $u,v$ 가 같은 Cluster에 있는 경우가 많다면, 그 숫자만큼 $p_c$를 포함한 확률 곱을 진행할 것이고, $p_c$의 값이 크다면, 해당 확률 곱의 값이 작아테고, 전체 $p(u,v)$가 커질 것이며 vice versa입니다. 
+
+위의 과정은 사실 최적의 모델이 존재한다고 가정했을 때, 해당 Generative Model을 통해 Graph를 생성하는 과정이었습니다. 하지만 이는 최종 결과이며, 저희는 처음에는 AGM과 같은 모델은 구축해야 하는데 이것은 수중에 있는 Graph로 제작해야 합니다. 즉, Graph가 주어졌을 때, 모델을 구축하는 과정은 포함되어 있는 파라미터를 추정해나가는 과정으로 진행됩니다.
+
+이는 Maximum Likelihood Estimation으로 가능합니다. 
+
+![image-20210112010001363](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210112010001363.png)
+
+해당 MLE 식에 대한 과정은, 
+
+* Parameter set $F$를 통해 모델을 구축한 뒤 
+* 해당 모델로 Graph가 생성될 확률이 가장 클 떄의
+* argmax이므로 $F$를 Return하라!
+
+입니다. 
+
+![image-20210112010154744](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210112010154744.png)
+
+즉 위와 같이, $P(u,v)$도 결국 $p_c$가 존재하면 구할 수 있는 파라미터이므로 $F$라고 간주한다면, 이를 MLE에 G와 함께 포함시켜 $P(G|F)$로 나타낼 수 있습니다. 
