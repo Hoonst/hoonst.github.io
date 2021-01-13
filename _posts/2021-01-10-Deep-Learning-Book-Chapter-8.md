@@ -143,7 +143,7 @@ Convex optimization 문제를 푸는 것은 Local Minimum을 찾는 것으로 �
 
 Non-convex function 같은 경우에는 여러 개의 local minima가 존재할 수 있습니다. 
 
-## Plateaus, Saddle Points and Other Flat regions
+해당 파트와 Plateaus 부분은 좀 더 강해져서 설명 드리겠습니다... 아직 무식하여 설명을 못드리겠습니다.
 
 ## Cliffs and Exploding Gradients
 
@@ -155,15 +155,9 @@ Gradient가 매우 커서 절벽에서 뛰어내리듯이 파라미터들이 크
 
 이런 문제를 해결하기 위해서 Gradient Clipping을 사용하는데 기본적인 개념은 Gradient가 지나치게 커서 큰 Step으로 Update가 진행되고자 할 때면, Step Size를 조정하여 천천히 절벽을 내려올 수 있도록 합니다. 
 
+아직 저는 무식하여... 전체 다 정리를 못하겠습니다. GoodFellow 형님은 좋은 친구인척 하면서 뒷통수를 치듯이, 쉽다쉽다 하면서 어렵습니다.... 더 강해져서 오겠습니다!
 
-
-## Inexact Gradients
-
-
-
-
-
-# Parameter Initialization Strategies
+![이말년짤](/assets/2021-01-10-Deep-Learning-Book-Chapter-8.assets/326220130818221327.jpg)
 
 
 
