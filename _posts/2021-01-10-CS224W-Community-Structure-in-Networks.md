@@ -37,7 +37,7 @@ Mark Granovetter라는 사회학자는 다음과 같은 질문을 해소하고�
 
 Friendship의 Structural role의 예시로는 Triadic Closure가 있습니다. 
 
-<img src="/assets/2021-01-10-CS224W-Community-Strucutre-in-Networks.assets/image-20210110112853248.png" alt="image-20210110112853248" style="zoom:50%;" />
+<img src="/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210113114528540.png" alt="image-20210113114528540" style="zoom:60%;" />
 
 Triadic closure의 정의는 다음과 같이 표현할 수 있습니다.
 
@@ -73,7 +73,7 @@ Granovetter는 위에서 소개한 Structural / Interpersonal(social)간의 관�
 
 Clustering Coefficient에 대한 정의를 복기해보면, '이웃간의 연결 강도'라고 할 수 있습니다. 즉, 자신을 제외한 나머지 노드들끼리의 관계가 어떻게 되느냐를 판단하는 것입니다. 
 
-![image-20210110120001310](/assets/2021-01-10-CS224W-Community-Strucutre-in-Networks.assets/image-20210110120001310.png)
+![image-20210110120001310](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210110120001310.png)
 
 따라서, 위와 같이 Triadic Closure를 생각해보면, A로 인해 B와 C가 만나게 되고 친해지게 될 것이므로, B / C간의 Edge가 생길 것이며 이로 인해, Clustering Coefficient가 증가할 것입니다. 
 
@@ -83,7 +83,7 @@ Onnela et al.은 EU 국가의 20%의 통화 기록을 통해 실험을 진행하
 
 실험 결과를 보기 전에, Edge Overlap 이라는 개념에 대해서 짚고 넘어갔습니다.
 
-<img src="/assets/2021-01-10-CS224W-Community-Strucutre-in-Networks.assets/image-20210110120523290.png" alt="image-20210110120523290" style="zoom:67%;" />
+![image-20210110120523290](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210110120523290.png)
 
 Edge Overlap이란 
 
@@ -91,7 +91,7 @@ Edge Overlap이란
 
 를 뜻하며, 위에서 식과 그림 예시를 표현해놨습니다. Structural / Interpersonal Strength를 비교해서 살펴보자면, 아래 그림과 같습니다.
 
-<img src="/assets/2021-01-10-CS224W-Community-Strucutre-in-Networks.assets/image-20210110121416645.png" alt="image-20210110121416645" style="zoom:50%;" />
+<img src="/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210110121416645.png" alt="image-20210110121416645" style="zoom:50%;" />
 
 왼쪽의 Edge Overlap이 0인 경우에는 초록색 선이 Local Bridge의 역할을 하여, 공통 친구가 없는 두 집단을 연결해주는 역할을 합니다. 물론 Edge Overlap이 큰 경우에도 초록선이 존재하지만 Local Bridge의 역할을 하지는 않습니다. 
 특징으로는,
@@ -103,11 +103,11 @@ Edge Overlap이란
 
 **실험 결과**
 
-<img src="/assets/2021-01-10-CS224W-Community-Strucutre-in-Networks.assets/image-20210110121900105.png" alt="image-20210110121900105" style="zoom:67%;" />
+<img src="/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210113114947112.png" alt="image-20210113114947112" style="zoom:67%;" />
 
 실험 결과, Edge Strength가 높을 수록, 즉 통화 빈도가 높은 관계일수록 Edge Overlap이 높아지는 것을 볼 수 있습니다. 하지만 이것이 우연의 결과가 아님을 증명하기 위하여, Network Structure를 유지한 채 Edge Strength를 재배치한 Null Model 과의 비교를 해보았더니, Null Model은 비례 관계가 유지되지 않았습니다. 
 
-![image-20210110122523279](/assets/2021-01-10-CS224W-Community-Strucutre-in-Networks.assets/image-20210110122523279.png)
+![image-20210113114924894](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210113114924894.png)
 
 좀 더 실제 Graph Edge에 대한 Visualization을 살펴보면 위와 같습니다. 좌측은 실제 네트워크의 Edge를 강도에 따라 색깔별로 표시한 것이며, 우측은 구조만 같게한 채 Strength를 Random Shuffle한 것입니다. 특징으로는,
 
@@ -116,17 +116,17 @@ Edge Overlap이란
 
 지금까지 설명했던 Edge들의 여러 특성을 통해 또다른 실험을 진행되었습니다. 
 
-![image-20210110123033986](/assets/2021-01-10-CS224W-Community-Strucutre-in-Networks.assets/image-20210110123033986.png)
+![image-20210110123033986](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210110123033986.png)
 
 다음과 같은 Cluster를 이루고 있는 Graph에서 Strength가 강하면 Community 내의 Edge일 것이고, 약하면 Community 끼리를 잇는 Edge일 것입니다. 따라서 Strong Edge를 순차적으로 없애는 행위는 Community를 부수는 것이 빠르게 진행되지 않을 것인데, 그 이유는 애초에 Densely Connected이기 때문입니다. 하지만 Weak Edge를 순차적으로 없앤다면, 전체적인 구조가 빠르게 부서질 것입니다. 
 
-![image-20210110123610866](/assets/2021-01-10-CS224W-Community-Strucutre-in-Networks.assets/image-20210110123610866.png)
+<img src="/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210110123610866.png" alt="image-20210110123610866" style="zoom:67%;" />
 
 위의 그래프는 Edge를 순차적으로(오름차순: low / 내림차순: high) 제거해나갈 때, Largest Component의 Size가 어떻게 변하는 지 살펴보는 것입니다. Size of Largest Component가 감소할수록 전체적 구조가 일그러진다고 생각해본다면, 두 그래프 모두 Low Strength / Overlap을 먼저 삭제하는 것이 빠른 감소로 나타났으며, 감소의 폭은 Strength보다 Overlap에서 더 크게 나타났습니다.
 
 ## Granovetter's Theory 정리
 
-<img src="/assets/2021-01-10-CS224W-Community-Strucutre-in-Networks.assets/image-20210110123956014.png" alt="image-20210110123956014" style="zoom:50%;" />
+<img src="/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210110123956014.png" alt="image-20210110123956014" style="zoom:80%;" />
 
 Granovetter의 이론을 정리하면 다음과 같습니다.
 
