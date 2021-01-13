@@ -231,19 +231,19 @@ $i$ 노드가 $C$로 소속 변경을 했을때, Modularity의 변화 또는 Gai
   * G를 생성했을 가장 좋은 AGM을 찾는다.
   * 이를 통해 Community를 찾을 수 있다.
 
-AGM으로 표현되는 Generative Model은 Parameter $(V, C, M, \{{p_c}\})$를 갖고 있습니다. 
+AGM으로 표현되는 Generative Model은 Parameter $(V, C, M, [{p_c}])$를 갖고 있습니다. 
 
 * $V$: Vertex
 * $C$: Community
 * $M$: Membership - Vertex가 어떤 Community에 Member인가?
-* $\{{p_c}\}$: 각 Community $c$ 내에 있는 노드들은 $p_c$의 동전 던지기 확률로 서로를 연결한다.
+* $[{p_c}]$: 각 Community $c$ 내에 있는 노드들은 $p_c$의 동전 던지기 확률로 서로를 연결한다.
   이 중 여러 Community에 Membership을 갖고 있는 Node는 Membership만큼 동전 던지기를 할 수 있다. 
 
 이를 통해 하나의 Community 내에 있는 Node $u,v$가 연결될 확률 $p(u,v)$는 다음과 같이 표현할 수 있습니다.
 
 $p(u,v) = 1- \prod\limits_{c\in M_u \cap M_v} (1-p_c)$
 
-해당 식을 읽어보면, 일단 $c\in M_u \cap M_v$가 있기 때문에 두 노드 $u,v$ 간의 멤버십이 교집합인 cluster에 대하여, 곱 연산을 합니다. 따라서, $u,v$ 가 같은 Cluster에 있는 경우가 많다면, 그 숫자만큼 $p_c$를 포함한 확률 곱을 진행할 것이고, $p_c$의 값이 크다면, 해당 확률 곱의 값이 작아테고, 전체 $p(u,v)$가 커질 것이며 vice versa입니다. 
+해당 식을 읽어보면, 일단 $c\in M_u \cap M_v$가 있기 때문에 두 노드 $u,v$ 간의 멤버십이 교집합인 cluster에 대하여, 곱 연산을 합니다. 따라서, $u,v$ 가 같은 Cluster에 있는 경우가 많다면, 그 숫자만 $p_c$를 포함한 확률 곱을 진행할 것이고, $p_c$의 값이 크다면, 해당 확률 곱의 값이 작아테고, 전체 $p(u,v)$가 커질 것이며 vice versa입니다. 
 
 위의 과정은 사실 최적의 모델이 존재한다고 가정했을 때, 해당 Generative Model을 통해 Graph를 생성하는 과정이었습니다. 하지만 이는 최종 결과이며, 저희는 처음에는 AGM과 같은 모델은 구축해야 하는데 이것은 수중에 있는 Graph로 제작해야 합니다. 즉, Graph가 주어졌을 때, 모델을 구축하는 과정은 포함되어 있는 파라미터를 추정해나가는 과정으로 진행됩니다.
 
