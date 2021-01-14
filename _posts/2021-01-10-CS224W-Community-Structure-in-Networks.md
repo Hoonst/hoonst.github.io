@@ -261,4 +261,5 @@ $p(u,v) = 1- \prod\limits_{c\in M_u \cap M_v} (1-p_c)$
 
 ![image-20210112010154744](/assets/2021-01-10-CS224W-Community-Structure-in-Networks.assets/image-20210112010154744.png)
 
-즉 위와 같이, $P(u,v)$도 결국 $p_c$가 존재하면 구할 수 있는 파라미터이므로 $F$라고 간주한다면, 이를 MLE에 G와 함께 포함시켜 $P(G|F)$로 나타낼 수 있습니다. 
+즉 위와 같이, $P(u,v)$도 결국 $p_c$가 존재하면 구할 수 있는 파라미터이므로 $F$라고 간주한다면, 이를 MLE에 G와 함께 포함시켜 $P(G\|F)$로 나타낼 수 있습니다. 
+
