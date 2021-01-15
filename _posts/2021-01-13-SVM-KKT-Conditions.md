@@ -8,6 +8,8 @@ comments: true
 typora-root-url: ../../hoonst.github.io
 ---
 
+본 포스트는 고려대학교 산업경영공학과 김성범 교수님의 예측모델 수업에서 부여된 과제를 푸는 과정에서 얻게 된 지식들을 정리한 것입니다.
+
 ## (1) SVM (분류), SVR (예측) 모델을 하이퍼파라미터를 다양하게 바꾸어서 구축하시오 (kernel function, C, ...)
 
 **SVM (분류)**
