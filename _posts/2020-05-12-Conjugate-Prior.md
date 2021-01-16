@@ -51,7 +51,7 @@ normalized_posterior = posterior / np.sum(posterior)
 
 왜 무수히 많은 theta에 대하여 posterior를 계산하고 있을까? 그 이유는 (line 21) posterior를 정규화하고 있기 때문이다. Posterior를 정규화하지 않도록 결정했다 하더라도, posterior의 최대를 찾는 것이 궁극적인 목표이다 (Maximum a posteriori). 최대를 기본적인 방법으로 찾는다고 한다면, 우리는 모든 후보를 고려해야 한다. -the likelihood P(X|θ) for every θ-
 
-###Second, posterior에 대한 closed-form formula가 존재하지 않는다고 한다면, 우리는 수치적으로 최적화(gradient descent, newton's method)를 진행해서 maximum을 구해야 한다.
+### Second, posterior에 대한 closed-form formula가 존재하지 않는다고 한다면, 우리는 수치적으로 최적화(gradient descent, newton's method)를 진행해서 maximum을 구해야 한다.
 
 # 3. Conjugate가 어떻게 도움이 되려나?
 
