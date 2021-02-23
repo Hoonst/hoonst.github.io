@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GNN Explainer"
+title: "GNN Explainer: Generating Explanations for Graph Neural Networks"
 description: "Rex Ying et al.(2019) "
 tags: [paper_review]
 date: 2021-02-03
@@ -123,13 +123,13 @@ GNN 기법으로 Node $v$의 Embedding $z$를 판단하고자 합니다.
 
 이 때, Mutual Information(MI)에 대한 식은 아래와 같이 표현할 수 있습니다.
 
->  $max_{G_S} MI(Y, (G_S, X_S)) = H(Y) - H(Y|G=G_S, X = X_S)$
+>  $max_{G_S} MI(Y, (G_S, X_S)) = H(Y) - H(Y\|G=G_S, X = X_S)$
 
 MI에 대한 일반적인 정의는 두 변수의 상호 종속 여부라고 할 수 있는데, 두 변수가 독립이라고 했을 때와 종속이라고 생각했을 때의 두 변수의 결합확률의 차이로서, 이 값이 크게 되면 두 변수가 독립이 아니라 종속에 가까우므로 관계가 크다고 할 수 있습니다. 즉, 위의 식에서는 $v_i$ 의 예측값인 $Y$ 와 Subgraph $G_S, X_S$ 의 연관성이 크다고 할 수 있는 것입니다. 
 
-MI의 최적화 식에서 $H(Y)$ 는 모델에서 모든 Computation Graph를 사용했을 때의 Return 값에 대한 Entropy이므로 고정입니다. 따라서 해당 최적화 식을 우항의 $H(Y|G=G_S, X = X_S)$ 를 최소화 시키는 것으로 전환할 수 있게 됩니다.
+MI의 최적화 식에서 $H(Y)$ 는 모델에서 모든 Computation Graph를 사용했을 때의 Return 값에 대한 Entropy이므로 고정입니다. 따라서 해당 최적화 식을 우항의 $H(Y\|G=G_S, X = X_S)$ 를 최소화 시키는 것으로 전환할 수 있게 됩니다.
 
-> $min H(Y|G=G_S, X = X_S)$
+> $min H(Y\|G=G_S, X = X_S)$
 
 해당 식은 Subgraph $G_S$의 Entropy인데, 본디 Entropy란 불확실성을 의미하기에 이를 최소화 한다는 뜻은 모델 $\Phi$의 불확실성을 줄인다는 뜻이 됩니다. 따라서 최적화 식의 의미가 목적과 결부하게 되며 이 때, $G_S$ 의 크기를 $K_M$ 으로 한정시켜 적당한 크기로 유지하기 됩니다.
 
@@ -137,11 +137,11 @@ MI의 최적화 식에서 $H(Y)$ 는 모델에서 모든 Computation Graph를 �
 
 수많은 $G_S$는 Intractable하므로 이를 해결하기 위해, $G_S$ 에 대하여 근사를 진행하며 이는 Random Graph를 Variational Distribution으로 정의하는 Variational Inference를 포함하고 있습니다. 또한 $G_S$들을 분포로 나타내기 위하여 Continuous Relaxation을 진행하며, Adjacency에 포함되어 있는 각 Cell을 0~1사이의 확률값으로 나타냅니다. 이에 따라 식을 변경하게 되면,
 
-> $min_\mathcal G E_{G_S\sim \mathcal G}H(Y|G = G_S, X = X_S)$
+> $min_\mathcal G E_{G_S\sim \mathcal G}H(Y\|G = G_S, X = X_S)$
 
 그리고 이를 Jensen's Inequality로 Upper Bound로 전환하면, 
 
-> $min_\mathcal G H(Y|G = E_\mathcal G[G_S], X = X_S)$
+> $min_\mathcal G H(Y\|G = E_\mathcal G[G_S], X = X_S)$
 
 로 표현할 수 있습니다. 이 Upper bound를 Minimize하는 것이 원래의 식을 Minimize하는 것과 같은 맥락을 갖게 됩니다. 
 
@@ -155,7 +155,7 @@ MI의 최적화 식에서 $H(Y)$ 는 모델에서 모든 Computation Graph를 �
 
 **Why Variational Inference?**
 
-살짝 짚고 넘어가고 싶은 부분은 GNN Explainer를 형성하는데에 있어, 왜 Variational Inference를 사용했는가 입니다. Variational Inference를 사용하는 경우는 Latent를 표현하는 Posterior 분포 $p(z|x)$가 Intractable할 때, Variational Distribution $q(z|x)$를 사용하여 근사하는 과정입니다. 즉, 분포의 Latent를 파악하는 것에 목적이 있는데, 이를 GNN Explainer에 연관짓자면, $G_c$ 속에 있는 Latent, $G_S$ 를 파악하는데에 있습니다. 
+살짝 짚고 넘어가고 싶은 부분은 GNN Explainer를 형성하는데에 있어, 왜 Variational Inference를 사용했는가 입니다. Variational Inference를 사용하는 경우는 Latent를 표현하는 Posterior 분포 $p(z\|x)$가 Intractable할 때, Variational Distribution $q(z\|x)$를 사용하여 근사하는 과정입니다. 즉, 분포의 Latent를 파악하는 것에 목적이 있는데, 이를 GNN Explainer에 연관짓자면, $G_c$ 속에 있는 Latent, $G_S$ 를 파악하는데에 있습니다. 
 
 따라서 전체 $G_c$ 중 중요한 Latent만을 뽑는 과정을 포함시켜야 하기 때문에 Variational Inference가 포함되지 않았을까 추측해봅니다.
 
