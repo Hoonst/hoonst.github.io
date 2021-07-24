@@ -241,6 +241,8 @@ GNN Explainer와 다르게 기존의 기법들은 Graph에 직접적으로 적�
 * ATT
   * GAT를 통해서 Computation Graph의 Edge들에 대하여 가중치를 계산할 수 있는데 Feature에 대한 가중치는 알 수 없다. 
 
+![image-20210223205628766](/assets/2021-02-03-GNNExplainer.assets/image-20210223205628766.png)
+
 **Setup and implementation details**
 
 * 각 데이터 셋에 대하여 먼저 GNN을 적용하여 훈련
@@ -287,13 +289,21 @@ REDDIT-BINARY Dataset에서는 Label이 각 그래프가 어떤 유형의 thread
 모든 Graph Based [Model]은 목적이 있습니다. 그리고 이 목적은 Node Classifcation / Graph Classifcation 등 다양하게 나타날 것입니다. 하지만 헷갈리는 것이 있는데 이는 Ground Truth입니다. 
 
 * Synthetic Dataset $\Rightarrow$ Base Graph에 연결된 Motif
-
 * Real-World Datasets $\Rightarrow$
 
   * MUTAG: 분자 구조를 구성하는 하위 요소를 다 알고 있으니 Ground Truth를 지정 가능
   * REDDIT: 각 thread의 일반적인 특징을 생각해서 정의
 
-  
+여기까지 해서 GNN Explainer에 대한 설명을 마칩니다. GNN Explainer는 XAI 분류 체계 내에서 Perturbation / Mask Generating Graph Explainer라고 할 수 있습니다. 
+
+특징으로는 
+
+* 중요한 Subgraph를 탐색하기 위하여 Variational Inference를 통해 Latent Distribution을 탐색하는데에 목적이 있으며,
+* Single Instance Explanation은 가능하지만 Multi Instance Explanation은 활용성이 부족합니다.
+
+GNNExplainer는 차후에 문제점이 여러 개 나타나며, 후속 논문들에서 이를 보완하기 위하여 많은 노력들이 가해지는데 GNN XAI의 최초의 논문이기에 함의점이 매우 큽니다. 이는 후속 논문들의 Baseline 역할을 하면서 GNN XAI를 어떻게 연구하고 실험을 해야할 지에 대한 Guideline을 제공했다고 할 수 있습니다. 
+
+
 
 
 
