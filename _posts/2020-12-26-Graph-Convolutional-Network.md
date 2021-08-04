@@ -40,11 +40,11 @@ $f \star g = (f * g)(t) \int_\infty^\infty f(t)g(t-\tau) d\tau$ 로 나타낼 �
 
 2020년은 '대 코로나 시대'로 였기에 아쉽게도 한 해를 마무리 하는 재야의 종소리를 실제로 보지 못하였습니다. 하지만 해당 종소리는 많은 분들이 익히 기억나실거라 생각합니다. 종을 맨 처음 '둥'치면 해당 타격에 의한 소리가 크게 울리면서 점차 감소할 것이며, 이는 아래의 꼴과 같습니다.
 
-<img src="../assets/2020-12-26-Graph-Convolutional-Network.assets/image-20210103111119779.png" alt="image-20210103111119779" style="zoom:30%;" />
+<img src="/assets/2020-12-26-Graph-Convolutional-Network.assets/image-20210103111119779.png" alt="image-20210103111119779" style="zoom:30%;" />
 
 그럼 이번에는 종을 두 번째로 치는데 처음 타격보다 약간 작게 치도록 하겠습니다. 
 
-![image-20210103111539067](../assets/2020-12-26-Graph-Convolutional-Network.assets/image-20210103111539067.png)
+![image-20210103111539067](/assets/2020-12-26-Graph-Convolutional-Network.assets/image-20210103111539067.png)
 
 두 번째 종소리는 첫 번째 종소리보다 작을 것이며 이는 위의 그림과 같이 표현할 수 있습니다. 그렇다면 우리의 청력은 두 소리를 완벽하게 구분할 수 없으므로, 두 소리가 합쳐진 소리가 들릴 것이며 이는 우측 그림의 파란색 선으로 표현할 수 있습니다. 따라서 하나의 함수 결과를 return하기 위하여 두 함수가 합쳐지는 것을 볼 수 있으며, 파란색 선이 합성곱의 결과라고 할 수 있습니다. 
 
@@ -56,7 +56,7 @@ $f \star g = (f * g)(t) \int_\infty^\infty f(t)g(t-\tau) d\tau$ 로 나타낼 �
 
 그럼 이제 Convolution이 Graph에 왜 필요한지에 대해서 생각을 해봐야 합니다. 그래프는 매우 유기적인 데이터 구조입니다. 하나의 노드는 단순히 자기 자신으로만 존재하는 것이 아니라 다른 이웃 노드들의 존재에 의해서 정의됩니다. 마치 사회의 일원처럼 말입니다. 따라서 Convolution과 같이 자신(Central Node) 주위에 있는 이웃 노드들의 정보를 한 데로 Aggregate하는 과정이 해당 연산을 빠르게 처리해줄 것이기에 합성곱 연산이 필요한 것입니다. 
 
-<img src="../assets/2020-12-26-Graph-Convolutional-Network.assets/image-20210103115239161.png" alt="image-20210103115239161" style="zoom:33%;" />
+<img src="/assets/2020-12-26-Graph-Convolutional-Network.assets/image-20210103115239161.png" alt="image-20210103115239161" style="zoom:33%;" />
 
 위의 그림은 좌측이 이미지 데이터에 대한 Convolution / 우측이 Graph Convolution을 나타냅니다. Convolution Filter는 본디 모든 데이터에 공통으로 사용되므로 regular grid형태로 나타납니다. 일반적인 CNN의 Filter를 생각해보면 알 수 있습니다. 하지만 우측의 Graph에서 살펴보게 되면, 일단 Grid 형태가 아닌 것은 차치하더라도, 모든 노드가 자신의 이웃에 대하여 Convolution Filter를 씌울 때, 해당 Filter의 크기가 모두 제각각일 것입니다. 
 
