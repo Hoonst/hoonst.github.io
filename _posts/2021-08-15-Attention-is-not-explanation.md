@@ -17,7 +17,7 @@ typora-root-url: ../../hoonst.github.io
 * **Attention에 대한 정의 및 중요도는 다량의, 양질의 자료들이 넘쳐나기 때문에 개념에 대해서는 자세히 다루지 않겠습니다.**
 * **즉, Attention의 개념을 알고 그것의 속성을 아는 것이 본 포스트의 목적입니다.**
 
-<img src="../assets/Attention-is-not-explanation.assets/dotproductattention1_final.PNG" alt="1) 어텐션 메커니즘 (Attention Mechanism) - 딥 러닝을 이용한 자연어 처리 입문" style="zoom: 67%;" />
+<img src="/assets/Attention-is-not-explanation.assets/dotproductattention1_final.PNG" alt="1) 어텐션 메커니즘 (Attention Mechanism) - 딥 러닝을 이용한 자연어 처리 입문" style="zoom: 67%;" />
 
 Attention은 'Attention is all you need' 논문에서 Transformer의 근간이 되었지만, 그 이전부터 사용된 방법이며 Seq2Seq Task에서 많이 활용되었습니다. 하지만 확실히 Transformer에서 그 두각을 크게 나타냈으며 이후 Pre-trained Model인 BERT로 까지 그 파급력이 이어졌는데 본질적으로 이 모든 것이 가능했던 이유는 Attention이라고 생각합니다. 
 
@@ -50,7 +50,7 @@ Attention이라는 것이 기본적으로 훈련이 완료되면 하나의 문�
 
   위의 문장의 [CLS] token으로 분류를 진행했는데 이 때 Attention을 간단하게 유추해보면, '사랑', '좋아' 에 크게 Attention의 가중치가 형성되었을 것입니다. 즉, 문장을 설명하는 Token들이 정해졌는데 이 때 다른 '너', '견딜만큼' 등과 같은 다른 유형이 Attention도 존재한다면 해당 결과를 낼 때 크게 영향을 미쳤던 단어들이 제각각이므로 고정적인 설명을 제시할 수 없게 됩니다. 
 
-  <img src="../assets/Attention-is-not-explanation.assets/image-20210814010155443.png" alt="image-20210814010155443" style="zoom:50%;" />
+  <img src="/assets/Attention-is-not-explanation.assets/image-20210814010155443.png" alt="image-20210814010155443" style="zoom:50%;" />
 
   위의 예시를 보게 되면, 똑같은 영화 평에 대하여 같은 결과 값, 0.01, 즉 부정으로 분류하였습니다. 좌측이 모델의 Attention을 살펴본 것인데, 해당 Attention에 대한 Adversarial Attention Weight는 우측과 같습니다. 즉, 같은 결과 값에 대하여 다른 Attention을 도출할 수 있게 된 것입니다. 
 
@@ -97,23 +97,23 @@ Attention이 과연 모델의 투명성을 제공해줄까? > Faithful Explanati
 
 ### Feature Importance 계산 법
 
-<img src="../assets/Attention-is-not-explanation.assets/image-20210814015639721.png" alt="image-20210814015639721" style="zoom: 33%;" />
+<img src="/assets/Attention-is-not-explanation.assets/image-20210814015639721.png" alt="image-20210814015639721" style="zoom: 33%;" />
 
 실험은 훈련이 완료된 뒤의 Test 단계에서 진행되므로, 훈련된 Attention Distribution을 고정시킬 수 있는데, 이 때 gradient를 살펴보게 되면 특정 입력에 따라 Output에 어떤 변화가 생길지를 알 수 있기에 설명력으로서의 효과를 볼 수 있으며, Leave one out의 경우는 하나의 입력을 제외했을 때의 결과에 대한 분포의 차이와 Attention 분포의 차이를 살펴보게 됩니다. 
 
 ### 각 Feature Importance와 Attention의 상관
 
-<img src="../assets/Attention-is-not-explanation.assets/image-20210814015843869.png" alt="image-20210814015843869" style="zoom:50%;" />
+<img src="/assets/Attention-is-not-explanation.assets/image-20210814015843869.png" alt="image-20210814015843869" style="zoom:50%;" />
 
 수치상으로 살펴보게 된다면, Attention Distribution과 각 Gradient / LOO Importance Measure 사이의 Kendall 상관도가 낮은 편에 속한다고 볼 수 있습니다. Sig. Frac. 는 해당 수치들이 통계적으로 유의함을 보여주는 것인데 대부분의 경우에 높은 값을 나타내 상관성이 있지만 낮음을 입증해주고 있습니다. 
 
-<img src="../assets/Attention-is-not-explanation.assets/image-20210814021501443.png" alt="image-20210814021501443" style="zoom:50%;" />
+<img src="/assets/Attention-is-not-explanation.assets/image-20210814021501443.png" alt="image-20210814021501443" style="zoom:50%;" />
 
 또한 위의 그림을 살펴보게 되면, 대부분의 데이터셋의 Attention과 Gradient 분포의 상관도가 0.5 이하가 대부분의 비중을 갖고 있으며, 그나마 MIMIC Task나 QA Task에서는 상관도가 높게 나타나 있으나, 0.5 근처이기에 그마저도 좀 약한 모습입니다. 
 
 그런데 여기서 추가적인 확인을 하게 되는데, 이는 Gradient와 LOO의 상관성의 유무입니다. 사실 Attention이 이 둘과 상관이 적다고 말하는데 Gradient와 LOO끼리의 상관도 적다면 단순히 모델의 설명력을 나타내는 지표들끼리 모두 각기 다른 방향을 바라보기 때문에 위와 같은 결과가 나타났다고 할 수 있으므로, 완벽한 결론을 위해선 Gradient와 LOO는 상관성이 있는데 Attention과는 없음을 나타내야 합니다. 
 
-<img src="../assets/Attention-is-not-explanation.assets/image-20210815120825876.png" alt="image-20210815120825876" style="zoom:67%;" />
+<img src="/assets/Attention-is-not-explanation.assets/image-20210815120825876.png" alt="image-20210815120825876" style="zoom:67%;" />
 
 위의 그림이 Gradient / LOO / Attention의 상관도 차이의 평균을 나타낸 것입니다. 
 
@@ -133,7 +133,7 @@ Attention이 과연 모델의 투명성을 제공해줄까? > Faithful Explanati
 1. 기존 Attention을 마구 섞어 Random하게 재배치
 2. 같은 결과를 도출하나 기존 Attention과 가장 차이 나는 Adversarial Attention 분포 생성
 
-![image-20210815121901057](../assets/Attention-is-not-explanation.assets/image-20210815121901057.png)
+![image-20210815121901057](/assets/Attention-is-not-explanation.assets/image-20210815121901057.png)
 
 인상적으로 살펴볼 부분은 SST 데이터셋에서 Maximum Attention Value가 높은 경우입니다. 
 
@@ -154,11 +154,11 @@ Random Permutation을 생성하는 방식은
 
 실제 수식은 TVD와 JSD를 사용하며 복잡한 구조를 보이지만 이는 생략하도록 하겠습니다. 
 
-<img src="../assets/Attention-is-not-explanation.assets/image-20210815122159391.png" alt="image-20210815122159391" style="zoom:50%;" />
+<img src="/assets/Attention-is-not-explanation.assets/image-20210815122159391.png" alt="image-20210815122159391" style="zoom:50%;" />
 
 위의 그림은 기존 Attention과 Adversarial의 최대 JSD를 나타내는데, 0.69를 최대로 잡은 해당 분포에서 Output 차이가 모든 JSD에서 낮게 나타나는 것을 볼 수 있습니다. 
 
-![image-20210815122231330](../assets/Attention-is-not-explanation.assets/image-20210815122231330.png)
+![image-20210815122231330](/assets/Attention-is-not-explanation.assets/image-20210815122231330.png)
 
 만약에 기존 Attention이 골고루 퍼져있다면, 같은 결과를 도출하는 분포를 생성하는 것은 그렇게 어렵지 않을 것입니다. 분포의 값들을 약간씩 변동해도 전체적인 모양에 변화가 적기 때문입니다. 하지만 특징적인 값에 Attention이 쏠려있다면 해당 분포는 개성이 강하기 때문에 변화를 시키게 된다면 전혀 다른 Attention 분포가 될 것이기에, Output이 크게 변화하지 않은 범위 아래에 그런 분포가 존재할 수 있을 지가 의심되기는 합니다. 
 
