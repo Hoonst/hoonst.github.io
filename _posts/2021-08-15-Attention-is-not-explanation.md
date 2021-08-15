@@ -2,9 +2,10 @@
 layout: post
 title: "Attention is not Explanation"
 description: "Jain and Wallace (2019) / NAACL"
-tags: [paper_review]
+tags: [paper_review, writing_psycho]
 date: 2021-8-15
 comments: true
+typora-root-url: ../../hoonst.github.io
 ---
 
 # Attention is not Explanation
