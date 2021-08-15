@@ -1,9 +1,11 @@
+---
 layout: post
 title: "Attention is not Explanation"
 description: "Jain and Wallace (2019) / NAACL"
 tags: [paper_review]
 date: 2021-8-15
 comments: true
+---
 
 # Attention is not Explanation
 
