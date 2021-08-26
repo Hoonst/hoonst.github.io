@@ -81,7 +81,9 @@ Attention이 과연 모델의 투명성을 제공해줄까? > Faithful Explanati
 각 섹션에 대한 그래프와 표를 보면서 더 자세히 살펴보기 전에 간략히 이해하셔야 할 개념이 있는데 이는 아래와 같습니다. 
 
 * Total Variation Distance (TVD): Output 분포의 차이
+
   $TVD(\hat{y}_1, \hat{y}_2) = \frac{1}{2}\sum_{i=1}^y\|\hat{y}_{1i} - \hat{y}_{2i}\|$
+
 * Jensen-Shannon Divergence (JSD): 두 Attention 분포의 차이
 
 해당 수치들을 통해 실험을 진행하여 분포의 차이를 보이고 이로써 Attention의 설명력을 보이고자 합니다. 
