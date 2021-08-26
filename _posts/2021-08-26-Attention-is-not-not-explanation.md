@@ -42,7 +42,7 @@ Not Not Ex는 Not Ex의 주장에 대하여, 절대적으로 부정하지는 않
 
 Not Ex에서는 모든 데이터셋에 대하여 Adversarial을 생성합니다. 하지만 만약에 특정 데이터셋에서 Attention이 있으나 마나한다면, 즉 효용성이 없다면 굳이 Explanation인가를 검증할 필요가 없게 됩니다. 따라서, 기존 Attention을 Uniform하게 변형했을 때 성능 변화가 적은 데이터셋은 실험 대상에서 제외하고, 변화가 존재하는 데이터셋에 대하여 Adversarial을 생성하는 것을 목적으로 첫번째 실험을 진행합니다. 
 
-![image-20210825222725524](../assets/2021-08-20-Attention-is-not-not-explanation.assets/image-20210825222725524.png)
+![image-20210825222725524](/assets/2021-08-20-Attention-is-not-not-explanation.assets/image-20210825222725524.png)
 
 실험 결과, AG News / 20 News 데이터셋에서는 Attention을 Uniform하게 대체했을 때, 성능의 큰 차이점이 존재하지 않다고 나타납니다. SST 역시 큰 차이점이 존재하지는 않지만, 다른 세 데이터셋에 대한 비교군으로서 실험 대상에 포함시켰습니다.
 
@@ -50,7 +50,7 @@ Not Ex에서는 모든 데이터셋에 대하여 Adversarial을 생성합니다.
 
 애초에 Model의 Attention이 Adversarial Attention이 아니더라도 불안정하여 변화가 쉽다면 Adversarial의 존재가 딱히 신기하지 않을 것입니다. 따라서 먼저 Model의 Random Seed를 변화시켜가면서 나타나는 Attention 분포의 변화를 살펴봤을 때, 차이가 크지 않음을 보여 Normal 상태를 규정한 뒤, Adversarial의 존재를 보여줘야 의미가 커지게 됩니다. 
 
-<img src="../assets/2021-08-20-Attention-is-not-not-explanation.assets/image-20210825223233842.png" alt="image-20210825223233842" style="zoom:50%;" />
+<img src="/assets/2021-08-20-Attention-is-not-not-explanation.assets/image-20210825223233842.png" alt="image-20210825223233842" style="zoom:50%;" />
 
 실험 결과, a,b,c,d 데이터셋에 대해서는 Seed를 변화시켰을 때, 분포 차이를 측정하는 JSD가 크게 변하지 않는 반면, Not Ex 방식으로 생성한 Adversarial이 큰 JSD를 나타내는 것을 볼 수가 있습니다. 
 
@@ -58,7 +58,7 @@ Not Ex에서는 모든 데이터셋에 대하여 Adversarial을 생성합니다.
 
 LSTM은 Token 간의 종속성을 기반으로 Hidden Representation을 계산합니다. 즉, Attention의 독단적인 Power를 보기 힘든데, 이것을 해소하기 위하여 LSTM 대신 MLP를 활용한 모델을 구성합니다. 
 
-<img src="../assets/2021-08-20-Attention-is-not-not-explanation.assets/image-20210825225427643.png" alt="image-20210825225427643" style="zoom: 33%;" />
+<img src="/assets/2021-08-20-Attention-is-not-not-explanation.assets/image-20210825225427643.png" alt="image-20210825225427643" style="zoom: 33%;" />
 
 즉, 실험 대상인 모델이 4가지로 구성이 되는데
 
@@ -75,7 +75,7 @@ LSTM은 Token 간의 종속성을 기반으로 Hidden Representation을 계산�
 
 **실험 결과**
 
-<img src="../assets/2021-08-20-Attention-is-not-not-explanation.assets/image-20210825231718477.png" alt="image-20210825231718477" style="zoom:50%;" />
+<img src="/assets/2021-08-20-Attention-is-not-not-explanation.assets/image-20210825231718477.png" alt="image-20210825231718477" style="zoom:50%;" />
 
 * Base LSTM, 즉 Attention을 활용하는 것이 다른 모델들보다 좋다.
 * Trained MLP 같은 경우 Token 간의 상호관계를 반영하지 않고 자기 자신의 중요도를 판단하는 모델인데, 해당 모델의 성능이 덜하다.
@@ -93,7 +93,7 @@ LSTM은 Token 간의 종속성을 기반으로 Hidden Representation을 계산�
 Adversarial Training을 거친 이후, 각 데이터셋에 대해 성능을 평가하게 되면, 이전 Jain and Wallace의 실험과는 다르게 성능이 매우 낮아지는 것을 볼 수 있습니다. (바로 위 표)
 이는 Adversarial Attention을 엄밀한 정의로 구성하게 된다면, 같은 예측을 할 수 없게 된다는 것을 시사합니다. 
 
-<img src="../assets/2021-08-20-Attention-is-not-not-explanation.assets/image-20210825231924971.png" alt="image-20210825231924971" style="zoom: 50%;" />
+<img src="/assets/2021-08-20-Attention-is-not-not-explanation.assets/image-20210825231924971.png" alt="image-20210825231924971" style="zoom: 50%;" />
 
 개인적으로 본 논문에서 가장 마음에 드는 결과는 위의 그림입니다. 위의 그림은 앞에서 언급한 $\lambda$ 파라미터를 변경해가면서 TVD와 JSD의 변화를 살펴보는 그림인데, 각 요소 (점, 선)의 색깔마다 의미하는 바가 있습니다. 
 
