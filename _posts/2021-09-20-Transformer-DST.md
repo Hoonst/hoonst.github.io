@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Transformer Dialogue State Tracking"
+title: "Jointly Optimizing State Operation Prediction and Value Generation for Dialogue State Tracking"
 description: "Zeng and Nie (2021)"
 tags: [paper_review, writing_psycho]
 date: 2021-9-20
@@ -8,7 +8,9 @@ comments: true
 typora-root-url: ../../hoonst.github.io
 ---
 
-# Jointly Optimizing State Operation Prediction and Value Generation for Dialogue State Tracking
+# Transformer DST
+
+## Dialogue State Tracking
 
 Dialogue State Tracking(DST)이란 Question Answering, Text-to-SQL과 같은 Semantic Parsing의 일종입니다. 이는 사용자와 시스템의 대화 내에서 사용자의 목적을 State라고 정의한 뒤, 그 State들을 정립해 나가는 과정입니다. 인공지능 스피커를 가지고 계신 분들이라면, 스피커와의 대화 속에서 인공지능이 정확하게 사용자의 요구를 파악한 뒤 그것을 행하는 전초 작업이라고 생각하시면 됩니다. 예를 들어 아래의 대화를 보시겠습니다.
 
@@ -46,7 +48,7 @@ BERT와 다르게 Transformer의 본래의 목적은 Generation이었습니다. 
 
 DST의 형태를 기본적으로 아시고, Transformer를 알고 계신다면 Transformer DST의 구조는 매우 쉽습니다. 따라서 간략하게만 서술하도록 하겠습니다. 
 
-### State Operation Prediction
+### State Operation Prediction (SOP)
 
 Encoder의 입력 값은 $D_{t-1}, D_t, S_{t-1}$ 입니다. D는 Dialogue이며, S는 State 그리고 아래 첨자 t는 시점을 말합니다. 따라서 t 시점에서의 인코딩은 t-1 시점의 대화와 state가 입력값이 되는 것입니다. 3개의 입력 값을 Concat하여 BERT로 나타나는 Transformer Encoder에 넣어주게 되며, 그림에서 [SLOT]으로 나타나있는 부분은 각 Domain-State-Value로 나타나있는 State들에 대한 표상으로 앞에 추가해주는 요소입니다. 입력 값이 구성되었다면, 그 이후의 과정은 Transformer의 과정을 따릅니다.
 
@@ -57,7 +59,7 @@ Encoder의 입력 값은 $D_{t-1}, D_t, S_{t-1}$ 입니다. D는 Dialogue이며,
 * DONT CARE: Value를 DONT CARE로 바꾼다. 
 * UPDATE: 디코더가 새로운 값을 생성해낸다. 
 
-## Slot Value Generation
+### Slot Value Generation (VG)
 
 이어서 Transformer DST의 디코더를 통해 각 Slot의 값을 생성해나가는 과정을 설명하도록 하겠습니다. 이는 Transformer의 Decoding 과정과 매우 유사하기에 Encoder의 Hidden Representation을 활용합니다. 하지만 앞에서 설명드렸다시피, Transformer를 그대로 사용하는 것, 즉 인코더의 모든 값들을 활용하는 것은 성능의 저하를 가져오기 때문에 UPDATE로 State  Operation이 할당된 SLOT에 대해서만 Encoder의 값을 사용합니다. 논문에서는 이를 'Re-use'라고 표현합니다. 
 
