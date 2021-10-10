@@ -14,6 +14,11 @@ typora-root-url: ../../hoonst.github.io
 
    이에 반해 Attention Flow 또는 논문에서 제안하는 Attention Rollout을 사용하게 되면, 다른 설명력 수단인 Gradient 또는 Leave-one-out (Blank-out) 방식과 Attention에 비해 더 높은 상관성을 갖게 됩니다. 즉, 설명력으로서의 역할이 강화되었다는 뜻입니다. 지금까지 Attention의 설명력을 평가하는 논문들에서는 아쉽게도 이런 현상이 있다 정도로만 설명하고, 그래서 어떻게 극복해야 하는 지에 대한 제안은 하지 않습니다. 하지만 본 논문은 그것을 시도했기에 의의가 크다고 생각합니다. 
 
+다음의 링크는 본 논문과 논문 작성자들의 블로그입니다. 내용 이해에 더 큰 도움이 될 것이기에 첨부합니다. 
+
+* https://arxiv.org/abs/2005.00928
+* https://samiraabnar.github.io/articles/2020-04/attention_flow
+
 ## Setups and Problem Statement
 
 ### Verb Number Prediction Task
