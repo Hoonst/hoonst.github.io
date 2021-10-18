@@ -18,6 +18,7 @@ typora-root-url: ../../hoonst.github.io
 
 * https://arxiv.org/abs/2005.00928
 * https://samiraabnar.github.io/articles/2020-04/attention_flow
+* https://github.com/samiraabnar/attention_flow
 
 ## Setups and Problem Statement
 
