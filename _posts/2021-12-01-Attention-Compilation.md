@@ -12,7 +12,7 @@ typora-root-url: ../../hoonst.github.io
 
 저는 해당 드라마를 통해 기득권의 강건함과 그것에 대항하는 자들의 위대함을 보았습니다. 기득권에 대항하는 자들은 자신의 주장을 관철하기 위하여 수많은 노력과 희생을 하는 것 같습니다. 엄청난 비약이긴 하지만 오늘 말씀드리고자 하는, 그리고 지난 'Attention is not Explanation'과 같이 Attention의 기능을 의심하는 주장들도 기존 Mainstream에 도전하기에 주인공 같은 느낌이 듭니다. 
 
-오늘은 Attention is not explanation 에 더불어 여러 추가적인 논문들에 대한 정리를 진행해보겠습니다. 
+오늘은 Attention is not explanation 에 더불어 여러 추가적인 논문들에 대한 정리를 진행해보겠습니다. 제목을 **Attentionology**라고 지어봤는데, 그 이유는 huggingface의 여러 목차를 살펴보던 중 BERT의 작동 원리에 대한 심도 깊은 연구를 한 논문들에 대해 BERTology라고 정의하고 있었기 때문에 차용했습니다. 
 
 # Attentionology
 
