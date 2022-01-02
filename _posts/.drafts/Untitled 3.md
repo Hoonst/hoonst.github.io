@@ -1,0 +1,2 @@
+# 정섭
+Normalizing Flows란 Deep Generative Model 중 하나로 변수 x와 잠재 공간을 나타내는 변수 z의 분포를 직접 매핑하는 방식을 통해 타겟 분포 x를 얻어냅니다. 이는 Latent 분포에서 어떻게 변수의 분포에 연결하는 지에 대한 Coupling Layer를 활용하여 진행하며 이를 통해 OoD에서는 입력 데이터의 모 분포 추정을 통해 Likelihood가 threshold 이하인 경우, OoD로 간주합니다. 이론 상으로는 가능하지만 실제로는 그 성능이 낮아 원인을 탐색하는 논문을 본 세미나에서 다루며 첫 번째 논문은 데이터 자체의 분산 때문이라 지적합니다. 좀 더 자세하게는 Jacobian Determinant가 문제라고 생각될 수 있지만 실질적인 원인은 분산임을 밝혀낸 것입니다. 두 번째 논문에서는 OoD에 대해 높은 Likelihood를 산출한 원인을 다른 시각에서 제시하며 Normalizing Flow 모델 자체가 학습하는 Inductive Bias가 원인이라 주장합니다. 감사합니다. 
