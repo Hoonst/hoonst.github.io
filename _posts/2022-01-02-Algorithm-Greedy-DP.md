@@ -3,11 +3,14 @@ layout: post
 title: "Algorithm: Greedy Algorithm / Dynamic Programming"
 description: "Graph Algorithm"
 tags: [Algorithm, writing_psycho]
-date: 2021-01-01
+date: 2022-01-02
 comments: true
 typora-root-url: ../../hoonst.github.io
 ---
 # Algorithm: Greedy Algorithm / Dynamic Programming
+
+- **해당 포스트는 지속적 업데이트를 진행할 것입니다. **
+- **그리디와 다이나믹 프로그래밍 문제들에 대한 링크가 포함될 것입니다. **
 
 본 포스트는 "파이썬 알고리즘 인터뷰"를 기반으로 작성되었습니다. 본 책은 알고리즘 공부에 있어 좋은 평가가 자자하며, 특히 한 줄 씩 뜯어먹을 때 이렇게 맛있는 책이 또 없는 것 같다고 생각합니다. 취업을 위해 알고리즘을 공부하는 현 시점에서 성경과도 같이 말씀 하나 하나가 주옥 같아 잘 때도 머리 맡에 두고 자고 있습니다. 
 
