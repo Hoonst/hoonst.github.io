@@ -1,8 +1,10 @@
 ---
-layout: article
+layout: post
 title: "Boosting - Paper"
-tags: paper_review
-mathjax: true
+tags: [paper_review]
+date: 2021-01-10
+comments: true
+typora-root-url: ../../hoonst.github.io
 ---
 # A Short Introduction to Boosting
 

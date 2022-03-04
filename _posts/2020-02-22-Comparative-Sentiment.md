@@ -129,6 +129,3 @@ CNN-static: non-static과 다르게 word-vector가 변하지 않는다
 Zhang et al.은 6개의 convolutional layer들과 뒤이어 3개의 fully connected layers로 감성 분석을 진행하였고, Kim의 것보다 훨씬 깊었다(Figure 1b). 이 아키텍처의 핵심은 temporal convolution이다.
 
 이산 input function 인 g(x)와 이산 kernel function인 f(x)가 존재할 때, h(y)는 다음과 같이 정의한다.
-
-### B. RNN-BASED MODELS
-RNN이
